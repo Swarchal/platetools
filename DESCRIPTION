@@ -1,0 +1,23 @@
+Package: platetools
+Title: Tools and Plots for Multi-Well Plates
+Version: 0.0.1
+Authors@R: person("Scott", "Warchal", email = "s.warchal@sms.ed.ac.uk", role = c("aut", "cre"))
+Description: Collection of functions for working with multi-well microtitre
+    plates, mainly 96, 384 and 1536 well plates.
+Depends:
+    R (>= 3.1.0)
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+    dplyr,
+    ggplot2,
+    plyr,
+    lazyeval,
+    raster,
+    RColorBrewer,
+    MASS,
+    viridis
+Suggests:
+    testthat
+RoxygenNote: 5.0.1
