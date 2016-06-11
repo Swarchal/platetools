@@ -14,9 +14,11 @@ out_missing <- missing_wells(missing, well = 'well')
 
 
 test_that("missing_wells errors when expected",{
-     expect_error( missing_wells(full, well = TRUE))
-     expect_error( missing_wells(full, well = "well", plate = 1))
-     expect_error( missing_wells(full, well = full$well))
+     expect_error(missing_wells(full, well = "well", plate = 1))
+	 expect_error(missing_wells(full, well = TRUE))
+     expect_error(missing_wells(full, well = full$well))
+	 expect_error(missing_wells(as.list(full), well = full$well),
+	 expect_error(missing_wells(full, well = missing$wel)))
 })
 
 test_that("missing wells doesn't return anything for a full plate",{
