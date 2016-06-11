@@ -19,7 +19,7 @@ devtools::install_github("swarchal/platetools")
 
 #### Use
 
-See the [vignette](platetools_gallery.ipynb).
+See the [vignette](vignette.ipynb).
 
 ###### Maintainer
 Scott Warchal - <s.warchal@sms.ed.ac.uk>
