@@ -4,7 +4,7 @@
 [![codecov.io](https://codecov.io/github/Swarchal/platetools/coverage.svg?branch=master)](https://codecov.io/github/Swarchal/platetools?branch=master)
 
 
-#### Tools for use with multi-well plates
+#### An R package for working with multi-well plates
 
 #### Installation
 
@@ -21,5 +21,5 @@ devtools::install_github("swarchal/platetools")
 
 See the [vignette](vignette.ipynb).
 
-###### Maintainer
+##### Maintainer
 Scott Warchal - <s.warchal@sms.ed.ac.uk>
