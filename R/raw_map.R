@@ -7,8 +7,6 @@
 #' @param plate Number of wells in complete plate (96, 384 or 1536)
 #'
 #' @import ggplot2
-#' @import dplyr
-#' @import RColorBrewer
 #'
 #' @return ggplot plot
 #'

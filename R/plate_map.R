@@ -5,6 +5,7 @@
 #' @param data numeric data to be used as colour scale
 #' @param well alpha-numeric well IDs, e.g 'A01'
 #' @return dataframe
+#' @import dplyr
 #' @export
 
 plate_map <- function(data, well){
@@ -106,6 +107,8 @@ plate_map_grid_scale <- function(data, well, plate_id, each){
 #'
 #' @param data vector or dataframe of numeric data
 #' @param well vector of alphanumeric well IDs e.g 'A01'
+#' @import dplyr
+
 plate_map_multiple <- function(data, well){
     platemap <- as.data.frame(well)
     platemap <- mutate(platemap,

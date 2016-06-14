@@ -17,9 +17,7 @@
 #'
 #' @return ggplot plot
 #'
-#' @import dplyr
 #' @import ggplot2
-#' @import RColorBrewer
 #'
 #' @export
 #'
@@ -91,7 +89,7 @@ hit_grid <- function(data, well,
                      ncol = ncols,
                      scales = 'free')
     } else if (plate == 1536L){
-	plt <- plt1536(platemap) + 
+	plt <- plt1536(platemap) +
 	    scale_fill_manual("hit", values = my_colours) +
 	    theme_bw() +
 	    theme(panel.margin.x = unit(1, "lines"),

@@ -12,7 +12,6 @@
 #' @return ggplot plot
 #'
 #' @import ggplot2
-#' @import dplyr
 #' @export
 #'
 #' @examples

@@ -11,8 +11,7 @@
 #' @param palette RColorBrewer palette
 #'
 #' @import ggplot2
-#' @import dplyr
-#' @import RColorBrewer
+#' @importFrom RColorBrewer brewer.pal
 #'
 #' @return ggplot plot
 #'

@@ -14,9 +14,8 @@
 #'
 #' @return ggplot plot
 #'
-#' @import dplyr
 #' @import ggplot2
-#' @import RColorBrewer
+#' @importFrom RColorBrewer brewer.pal
 #'
 #' @export
 #'
@@ -127,7 +126,7 @@ bhit_map <- function(data, well,
             scale_fill_manual("hit", values = my_colours) +
             theme_bw()
     } else if (plate == 1536L){
-	plt <- plt1536(platemap) + 
+	plt <- plt1536(platemap) +
 	    scale_fill_manual("hit", values = my_colours) +
 	    theme_bw()
     } else stop("Not a valid plate format. Either 96 or 384.", call. = FALSE)

@@ -18,8 +18,6 @@
 #' @return ggplot plot
 #'
 #' @import ggplot2
-#' @import dplyr
-#' @import RColorBrewer
 #' @importFrom stats prcomp
 #'
 #' @export

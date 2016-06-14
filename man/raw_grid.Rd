@@ -21,7 +21,7 @@ raw_grid(data, well, plate_id, ncols = 2, plate = 96)
 ggplot plot
 }
 \description{
-Converts numerical values. well labels, and plate labels into multiple 
+Converts numerical values. well labels, and plate labels into multiple
 plate heatmaps
 }
 \examples{

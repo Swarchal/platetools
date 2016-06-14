@@ -14,8 +14,6 @@
 #' @return ggplot plot
 #'
 #' @import ggplot2
-#' @import dplyr
-#' @import RColorBrewer
 #'
 #' @export
 #'
@@ -63,7 +61,7 @@ z_grid <- function(data, well,
 			ncol = ncols,
 			scales = 'free')
     } else if (plate == 1536L) {
-	plt <- plt1536(platemap) + 
+	plt <- plt1536(platemap) +
 		theme_bw() +
 		theme(panel.margin.x = unit(1, "lines"),
 		    panel.margin.y = unit(1, "lines")) + # increase spacing between facets
