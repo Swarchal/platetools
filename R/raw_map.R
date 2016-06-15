@@ -23,13 +23,7 @@
 raw_map <- function(data, well,
                     plate = 96) {
 
-    if (!is.vector(data)){
-	stop("'data' has to be a single column or a vector")
-    }
-
-    if (length(well) > plate) {
-        stop("Invalid plate selection. The data given has more rows than the number of wells. \nAre you sure argument 'plate' is correct for the number of wells in your data? \nnote: Default is set to a 96-well plate.")
-    }
+    check_plate_input(well, plate)
 
     # transform well labels into row-column values
     platemap <- plate_map(data, well)

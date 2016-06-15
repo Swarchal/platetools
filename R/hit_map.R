@@ -35,9 +35,7 @@ hit_map <- function(data, well,
 
     stopifnot(is.vector(data))
 
-    if (length(well) > plate) {
-        stop("Invalid plate selection. The data given has more rows than the number of wells. \nAre you sure argument 'plate' is correct for the number of wells in your data? \nnote: Default is set to a 96-well plate.")
-    }
+    check_plate_input(well, plate)
 
     # transform well labels into row-column values for a 96-well plate
     platemap <- plate_map_scale(data, well)

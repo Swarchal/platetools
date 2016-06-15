@@ -25,11 +25,7 @@ z_map <- function(data, well,
 
     stopifnot(is.vector(data))
 
-
-    if (length(well) > plate) {
-        stop("Invalid plate selection. The data given has more rows than number of wells. \nAre you sure argument 'plate' is correct for the number of wells in your data? \nnote: Default is set to a 96-well plate.",
-            call. = FALSE)
-    }
+    check_plate_input(well, plate)
 
     platemap <- plate_map_scale(data, well)
 

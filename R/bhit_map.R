@@ -40,14 +40,8 @@ bhit_map <- function(data, well,
     # ensure data is ordered properly before passing to matrix()
     platemap <- platemap[order(platemap$Row, platemap$Column), ]
 
-    if (length(well) > plate){
-        warning("Invalid plate selection. The data given has more rows then number of wells. \nAre you sure argument 'plate' is correct for the number of wells in your data? \nnote: Default is a 96-well plate.",
-                call. = FALSE)
-    }
-    if (plate > 2 * length(well)){
-        warning("Invalid plate selection. The data given has more rows then number of wells. \nAre you sure argument 'plate' is correct for the number of wells in your data? \nnote: Default is a 96-well plate.",
-                call. = FALSE)
-    }
+    check_plate_input(well, plate)
+
     if (plate == 96L){
         # transform into 12*8 matrix (96-well plate)
         # fills matrix in a row-wise fashion i.e, A01, A02 ...

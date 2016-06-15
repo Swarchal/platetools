@@ -47,20 +47,7 @@
     # ensure data is ordered properly before passing to matrix()
     platemap <- platemap[order(platemap$Row, platemap$Column), ]
 
-
-    if (length(well) > plate){
-        warning("Invalid plate selection. The data given has more rows then number of wells. \nAre you sure argument 'plate' is correct for the number of wells in your data? \nnote: Default is a 96-well plate.",
-                call. = FALSE)
-    }
-    if (plate > 2 * length(well)){
-        warning("Plate has greater than twice the number of wells than data points. \nAre you sure this is the correct plate? \nDefault argument is 96.",
-                call. = FALSE)
-    }
-
-    if (length(well) > plate) {
-        stop("Invalid plate selection. The data given has more rows than number of wells. \nAre you sure argument 'plate' is correct for the number of wells in your data? \nnote: Default is set to a 96-well plate.",
-             call. = FALSE)
-    }
+    check_plate_input(well, plate)
 
     df <- med_smooth(platemap, plate)
 
