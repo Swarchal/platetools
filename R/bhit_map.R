@@ -68,7 +68,7 @@ bhit_map <- function(data, well,
 				ncol = 24,
 				byrow = TRUE)
     } else{
-        stop("Not a plate format. \nArgument 'plate' should be 96, 384 or 1536.",
+        stop("Not a plate format.\nArgument 'plate' should be 96, 384 or 1536.",
              call. = FALSE)
     }
 
@@ -130,10 +130,6 @@ bhit_map <- function(data, well,
 	    scale_fill_manual("hit", values = my_colours) +
 	    theme_bw()
     } else stop("Not a valid plate format. Either 96 or 384.", call. = FALSE)
-
-    if (length(well) > plate) {
-        stop("Invalid plate selection. The data given has more rows than the number of wells. \nAre you sure argument 'plate' is correct for the number of wells in your data? \nnote: Default is set to a 96-well plate.")
-    }
 
     return(plt)
 }
