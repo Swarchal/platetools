@@ -76,7 +76,7 @@ b_grid <- function(data, well, plate_id, plate = 96) {
 list_to_dataframe <- function(l, col_name = NULL){
 
   # check l is a list
-  if (!is.list(l)) stop(paste(l , "needs to be a list"))
+  if (!is.list(l)) stop(paste(substitute(l) , "needs to be a list"))
 
   # if col_name is a string, will create a new column from the element names
   # within the list
