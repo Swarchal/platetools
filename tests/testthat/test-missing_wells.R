@@ -19,6 +19,8 @@ test_that("missing_wells errors when expected",{
      expect_error(missing_wells(full, well = full$well))
 	 expect_error(missing_wells(as.list(full), well = full$well),
 	 expect_error(missing_wells(full, well = missing$wel)))
+	 expect_error(missing_wells(as.matrix(full), well = full$well))
+	 expect_error(missing_wells(fill, well = full$not_valid_col))
 })
 
 test_that("missing wells doesn't return anything for a full plate",{
