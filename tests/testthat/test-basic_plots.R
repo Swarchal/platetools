@@ -31,6 +31,23 @@ test_that("return ggplot object", {
 
        #############################
 
+
+        expect_is(bhit_map(data = vals96,
+                          well = wells96),
+                          'ggplot')
+
+        expect_is(bhit_map(data = vals384,
+                          well = wells384,
+                          plate = 384),
+                          'ggplot')
+
+        expect_is(bhit_map(data = vals1536,
+                          well = wells1536,
+                          plate = 1536),
+                          'ggplot')
+
+       #############################
+
         expect_is(hit_map(data = vals96,
                           well = wells96),
                           'ggplot')
@@ -85,26 +102,42 @@ test_that("return ggplot object", {
 test_that("returns error when incorrect plate is passed", {
 
     expect_warning(b_map(data = vals384,
-                       well = wells384,
-                       plate = 96))
+                         well = wells384,
+                         plate = 96))
 
     expect_warning(b_map(data = vals1536,
-                       well = wells1536,
-                       plate = 384))
+                         well = wells1536,
+                         plate = 384))
 
-    expect_error(z_map(data = vals96,
+    expect_error(b_map(data = vals96,
                        well = wells96,
                        plate = 1))
 
        ############################
 
+
+    expect_warning(bhit_map(data = vals384,
+                            well = wells384,
+                            plate = 96))
+
+    expect_warning(bhit_map(data = vals1536,
+                            well = wells1536,
+                            plate = 384))
+
+    expect_error(bhit_map(data = vals96,
+                          well = wells96,
+                          plate = 1))
+
+       ############################
+
+
     expect_warning(hit_map(data = vals384,
-                         well = wells384,
-                         plate = 96))
+                           well = wells384,
+                           plate = 96))
 
     expect_warning(hit_map(data = vals1536,
-                         well = wells1536,
-                         plate = 384))
+                           well = wells1536,
+                           plate = 384))
 
     expect_error(hit_map(data = vals96,
                          well = wells96,
