@@ -21,7 +21,7 @@
 #'
 #' pc_map(data = df[, 2:3],
 #'        well = df$well,
-#'        plate = 384)
+#'        plate = 96)
 
 pc_map <- function(data, well,
     plate = 96){
