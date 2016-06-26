@@ -33,7 +33,7 @@ raw_map(data = df$vals,
 
 ```
 
-<img src="graphics/example_plate.svg" width="100%" height="300">
+<img src="/graphics/example_platemap.png" height="300">
 
 
 See the [vignette](vignette.ipynb) for more examples.
