@@ -27,7 +27,7 @@ df <- data.frame(vals = rnorm(1:384),
 raw_map(data = df$vals,
         well = df$well,
         plate = 384) +
-    ggtitle("title") +
+    ggtitle("Example 384-well plate") +
     theme_dark() +
     scale_fill_viridis()
 
