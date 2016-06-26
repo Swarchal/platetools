@@ -30,9 +30,10 @@ raw_map(data = df$vals,
     ggtitle("title") +
     theme_dark() +
     scale_fill_viridis()
+
 ```
 
-![](/graphics/example_plate.svg)
+<img src="/graphics/example_plate.svg" width="100%" height="300">
 
 
 See the [vignette](vignette.ipynb) for more examples.
