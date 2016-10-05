@@ -2,7 +2,7 @@ language: r
 r:
     - oldrel
     - release
-    -devel
+    - devel
 cache: packages
 sudo: required
 r_github_packages:
