@@ -40,11 +40,11 @@ z_map <- function(data, well,
             theme_bw()
 
     } else if (plate == 1536L) {
-	plt <- plt1536(platemap) +
-	    theme_bw()
+    plt <- plt1536(platemap) +
+        theme_bw()
 
     } else stop("Not a valid plate format. Enter either 96, 384 or 1536.",
-		call. = FALSE)
+    call. = FALSE)
 
 
     return(plt)

@@ -35,8 +35,8 @@ med_smooth <- function(platemap, plate){
     } else if (plate == 1536){
         mat_plate_map <- matrix(platemap$values,
                                 nrow = 32,
-			                    ncol = 48,
-			                    byrow = TRUE)
+                                ncol = 48,
+                                byrow = TRUE)
     } else {
         stop("Not a plate format. \nArgument 'plate', should be 96 or 384.",
              call. = FALSE)
@@ -81,28 +81,28 @@ med_smooth <- function(platemap, plate){
 #' @export
 
 
-plate_effect <- function(platemap, plate){
+plate_effect <- function(platemap, plate) {
     if (plate == 96L){
-	mat_plate_map <- matrix(platemap$values,
-				nrow = 8,
-				ncol = 12,
-				byrow = TRUE)
+        mat_plate_map <- matrix(platemap$values,
+                                nrow = 8,
+                                ncol = 12,
+                                byrow = TRUE)
     } else if (plate == 384L){
-	mat_plate_map <- matrix(platemap$values,
-				nrow = 16,
-				ncol = 24,
-				byrow = TRUE)
+        mat_plate_map <- matrix(platemap$values,
+                                nrow = 16,
+                                ncol = 24,
+                                byrow = TRUE)
     } else if (plate == 1536L) {
-	mat_plate_map <- matrix(platemap$values,
-				nrow = 32,
-				ncol = 48,
-				byrow = TRUE)
+        mat_plate_map <- matrix(platemap$values,
+                                nrow = 32,
+                                ncol = 48,
+                                byrow = TRUE)
     } else {
-	stop("Not a plate format")
+    stop("Not a plate format")
     }
     data_pol <- medpolish(mat_plate_map,
-			   na.rm = TRUE,
-			   trace.iter = FALSE)
+                          na.rm = TRUE,
+                          trace.iter = FALSE)
 
     return(data_pol)
 }

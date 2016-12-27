@@ -32,17 +32,11 @@
 
  b_map <- function(data, well,
                   normalise = FALSE,
-                  plate = 96){
-
-
-    # b_score() to obtain residual values
-    #--------------------------------------------------------------------------
-
+                  plate = 96) {
     stopifnot(is.vector(data))
 
     # need to transform columns of wellID and data into
     # matrix corresponding to well positions:
-
     platemap <- plate_map(data, well)
     # ensure data is ordered properly before passing to matrix()
     platemap <- platemap[order(platemap$Row, platemap$Column), ]
@@ -58,15 +52,17 @@
     if (plate == 96L){
         plt <- plt96(platemap) +
             theme_bw()
-    } else if (plate == 384L){
+    } else if (plate == 384L) {
         # produce a plate map in ggplot (384-well format)
         plt <- plt384(platemap) +
             theme_bw()
-    } else if (plate == 1536L){
-	plt <- plt1536(platemap) +
-	    theme_bw()
-    } else stop("Not a valid plate format. Enter either 96, 384 or 1536.",
-    call. = FALSE)
+    } else if (plate == 1536L) {
+    plt <- plt1536(platemap) +
+        theme_bw()
+    } else {
+        stop("Not a valid plate format. Enter either 96, 384 or 1536.",
+             call. = FALSE)
+    }
 
     return(plt)
 }

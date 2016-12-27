@@ -73,22 +73,23 @@ b_grid <- function(data, well, plate_id, plate = 96) {
 #'
 
 
-list_to_dataframe <- function(l, col_name = NULL){
+list_to_dataframe <- function(l, col_name = NULL) {
 
-  # check l is a list
-  if (!is.list(l)) stop(paste(substitute(l) , "needs to be a list"))
-
-  # if col_name is a string, will create a new column from the element names
-  # within the list
-  if (!is.null(col_name)){
+    # check l is a list
+    if (!is.list(l)) {
+      stop(paste(substitute(l) , "needs to be a list"))
+    }
+    # if col_name is a string, will create a new column from the element names
+    # within the list
+    if (!is.null(col_name)) {
     # create column from list name
-    for (name in names(l)){
+    for (name in names(l)) {
       l[[name]][col_name] <- name
     }
-  }
+    }
 
-  # create data frame from list
-  out_df <- do.call(rbind, l)
-  rownames(out_df) <- NULL
-  return(out_df)
+    # create data frame from list
+    out_df <- do.call(rbind, l)
+    rownames(out_df) <- NULL
+    return(out_df)
 }

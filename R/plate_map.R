@@ -15,19 +15,19 @@ plate_map <- function(data, well){
 
     # if not a 1536 well plate, we can just convert well labels to numbers
     if (!is_1536(well)){
-    platemap <- mutate(platemap,
-    Row = as.numeric(match(toupper(substr(well, 1,1)), LETTERS)),
-    Column = as.numeric(substr(well, 2, 5)))
+        platemap <- mutate(platemap,
+        Row = as.numeric(match(toupper(substr(well, 1,1)), LETTERS)),
+        Column = as.numeric(substr(well, 2, 5)))
     } else {
-    # if a 1536 plate cannot convert the well labels directly to row and column
-    # values as we have double well ID's, i.e 'AA' isn't a number
-    Row <- as.numeric(match(toupper(substr(well, 1, 1)), LETTERS))
-    add_to_row <- ifelse(nchar(as.character(well)) == 4, 26, 0)
-    Row <- Row + add_to_row
+        # if a 1536 plate cannot convert the well labels directly to row and column
+        # values as we have double well ID's, i.e 'AA' isn't a number
+        Row <- as.numeric(match(toupper(substr(well, 1, 1)), LETTERS))
+        add_to_row <- ifelse(nchar(as.character(well)) == 4, 26, 0)
+        Row <- Row + add_to_row
 
-    platemap <- mutate(platemap,
-        Row = Row,
-        Column = as.numeric(substr(well, nchar(as.character(well)) - 1, 5)))
+        platemap <- mutate(platemap,
+            Row = Row,
+            Column = as.numeric(substr(well, nchar(as.character(well)) - 1, 5)))
 
     }
     platemap['values'] <- data

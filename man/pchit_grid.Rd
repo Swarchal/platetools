@@ -4,8 +4,7 @@
 \alias{pchit_grid}
 \title{Plots multiple heatmaps identifying hits from the first principal component}
 \usage{
-pchit_grid(data, well, plate_id, ncols = 2, plate = 96, threshold = 2,
-  each = FALSE, palette = "Spectral")
+pchit_grid(data, well, plate_id, ...)
 }
 \arguments{
 \item{data}{Numerical values, either a dataframe or a matrix}
@@ -14,17 +13,7 @@ pchit_grid(data, well, plate_id, ncols = 2, plate = 96, threshold = 2,
 
 \item{plate_id}{Vector of plate identifiers e.g "Plate_1"}
 
-\item{ncols}{Number of columns to display multiple plates}
-
-\item{plate}{Number of wells in complete plate (96, 384 or 1536)}
-
-\item{threshold}{Threshold of +/- standard deviations form the average
-to determine a hit}
-
-\item{each}{boolean, if true scales each plate individually, if false will
-scale the pooled values of \code{data}}
-
-\item{palette}{RColorBrewer palette}
+\item{...}{additional arguments to `platetools::hit_grid()`}
 }
 \value{
 ggplot plot

@@ -42,26 +42,26 @@ bhit_map <- function(data, well,
 
     check_plate_input(well, plate)
 
-    if (plate == 96L){
+    if (plate == 96L) {
         # transform into 12*8 matrix (96-well plate)
         # fills matrix in a row-wise fashion i.e, A01, A02 ...
         mat_plate_map <- matrix(data,
                                 nrow = 8,
                                 ncol = 12,
                                 byrow = TRUE)
-    } else if (plate == 384L){
+    } else if (plate == 384L) {
         # transform into 24*16 matrix (384-well plate)
         # fills matrix in a row-wise fashion, i.e A01, A02 ...
         mat_plate_map <- matrix(data,
                                 nrow = 16,
                                 ncol = 24,
                                 byrow = TRUE)
-    } else if (plate == 1536L){
-	mat_plate_map <- matrix(data,
-				            nrow = 32,
-				            ncol = 24,
-				            byrow = TRUE)
-    } else{
+    } else if (plate == 1536L) {
+    mat_plate_map <- matrix(data,
+                            nrow = 32,
+                            ncol = 24,
+                            byrow = TRUE)
+    } else {
         stop("Not a plate format.\nArgument 'plate' should be 96, 384 or 1536.",
              call. = FALSE)
     }
@@ -79,25 +79,27 @@ bhit_map <- function(data, well,
     # produce dataframe of two columns
     df <- NULL
 
-    for (num in 1:length(t_out)){
+    for (num in 1:length(t_out)) {
         df$residual[num] <- t_out[num]
         df$well[num] <- num_to_well(num, plate = plate)
     }
 
-    df <- as.data.frame(
-        cbind("well" = df$well,
-              "residual" = df$residual))
+    df <- as.data.frame(cbind("well" = df$well, "residual" = df$residual))
     # change residuals from factor to numeric
     df$residual <- as.numeric(as.character(df$residual))
 
-    platemap$values <- scale(df$residual)[,]
+    platemap$values <- scale(df$residual)[, ]
     platemap$hit <- NA
 
     # calculate whether values are beyond the threshold; defined as hit or null
-    for (row in 1:nrow(platemap)){
-        if (platemap[row, 'values'] > threshold){platemap$hit[row] <- "hit"
-        } else if (platemap[row, 'values'] < (-1*threshold)){platemap$hit[row] <- "neg_hit"
-        } else {platemap$hit[row] <- "null"}
+    for (row in 1:nrow(platemap)) {
+        if (platemap[row, 'values'] > threshold) {
+            platemap$hit[row] <- "hit"
+        } else if (platemap[row, 'values'] < (-1*threshold)) {
+            platemap$hit[row] <- "neg_hit"
+        } else {
+            platemap$hit[row] <- "null"
+        }
     }
 
     # change name of hit to values
@@ -114,16 +116,17 @@ bhit_map <- function(data, well,
         plt <- plt96(platemap) +
             scale_fill_manual("hit", values = my_colours) +
             theme_bw()
-    } else if (plate == 384){
+    } else if (plate == 384) {
         # produce a 384-well plate map layout in ggplot
         plt <- plt384(platemap) +
             scale_fill_manual("hit", values = my_colours) +
             theme_bw()
-    } else if (plate == 1536L){
+    } else if (plate == 1536L) {
         plt <- plt1536(platemap) +
-	       scale_fill_manual("hit", values = my_colours) +
-	       theme_bw()
-    } else stop("Not a valid plate format. Either 96 or 384.", call. = FALSE)
-
+           scale_fill_manual("hit", values = my_colours) +
+           theme_bw()
+    } else {
+        stop("Not a valid plate format. Either 96 or 384.", call. = FALSE)
+    }
     return(plt)
 }

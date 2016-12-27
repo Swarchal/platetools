@@ -43,9 +43,13 @@ hit_map <- function(data, well,
 
     # calculate whether values are beyond the threshold; defined as hit or null
     for (row in 1:nrow(platemap)){
-        if (platemap[row, 'values'] > threshold) {platemap$hit[row] <- "hit"
-        } else  if (platemap[row, 'values'] < (-1 * threshold)){platemap$hit[row] <- "neg_hit"
-        } else {platemap$hit[row] <- "null"}
+        if (platemap[row, 'values'] > threshold) {
+            platemap$hit[row] <- "hit"
+        } else  if (platemap[row, 'values'] < (-1 * threshold)) {
+            platemap$hit[row] <- "neg_hit"
+        } else {
+            platemap$hit[row] <- "null"
+        }
     }
 
     # RColorBrewerPalette
@@ -68,11 +72,12 @@ hit_map <- function(data, well,
             scale_fill_manual("hit", values = my_colours) +
             theme_bw()
     } else if (plate == 1536L){
-	plt <- plt1536(platemap) +
-	    scale_fill_manual("hit", values = my_colours) +
-	    theme_bw()
-    } else stop("Not a valid plate format. Either 96, 384 or 1536.", call. = FALSE)
-
+        plt <- plt1536(platemap) +
+            scale_fill_manual("hit", values = my_colours) +
+            theme_bw()
+    } else {
+        stop("Not a valid plate format. Either 96, 384 or 1536.", call. = FALSE)
+    }
     return(plt)
 
 }

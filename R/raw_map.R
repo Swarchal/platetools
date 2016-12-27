@@ -29,17 +29,17 @@ raw_map <- function(data, well,
     platemap <- plate_map(data, well)
 
     if (plate == 96){
-	plt <- plt96(platemap) +
-	    theme_bw()
+    plt <- plt96(platemap) +
+        theme_bw()
     } else if (plate == 384){
-	plt <- plt384(platemap) +
-	    theme_bw()
+    plt <- plt384(platemap) +
+        theme_bw()
     } else if (plate == 1536L){
-	plt <- plt1536(platemap) +
-	    theme_bw()
+    plt <- plt1536(platemap) +
+        theme_bw()
     } else{
-	stop("Invalid argument for 'plate'. \nOption: 96, 384 or 1546",
-	    call. = FALSE)
+    stop("Invalid argument for 'plate'. \nOption: 96, 384 or 1546",
+        call. = FALSE)
     }
 
     return(plt)

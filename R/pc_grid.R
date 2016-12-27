@@ -47,11 +47,11 @@ pc_grid <- function(data, well,
       pc1 <- pca_data$x[, 1] # take first principal component
 
       pc_grid <- z_grid(pc1,
-			well,
-			plate_id,
-			ncols,
-			plate,
-			...)
+                        well,
+                        plate_id,
+                        ncols,
+                        plate,
+                        ...)
 
       return(pc_grid)
 }
