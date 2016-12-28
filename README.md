@@ -36,7 +36,7 @@ raw_map(data = df$vals,
 <img src="/graphics/example_platemap.png" height="300">
 
 
-See the [vignette](vignette.ipynb) for more examples.
+See the [vignette](https://gist.github.com/Swarchal/b938933ae9ded94b3c14d6485b27cf69) for more examples.
 
 ###### Grammar
 
