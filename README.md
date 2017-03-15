@@ -18,7 +18,9 @@ devtools::install_github("swarchal/platetools")
 ```
 
 ### Use
+
 <img src="/graphics/example_platemap.png" height="250" align="right"/>
+
 ```r
 # example dataframe
 df <- data.frame(vals = rnorm(384),
