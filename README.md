@@ -19,7 +19,6 @@ devtools::install_github("swarchal/platetools")
 
 ### Use
 
-<img src="/graphics/example_platemap.png" height="250", align="right"/>
 ```r
 # example dataframe
 df <- data.frame(vals = rnorm(384),
@@ -33,7 +32,7 @@ raw_map(data = df$vals,
     scale_fill_viridis()
 
 ```
-
+![platemap_img](src="/graphics/example_platemap.png" height="250", align="right")
 
 
 See the [vignette](https://gist.github.com/Swarchal/b938933ae9ded94b3c14d6485b27cf69) for more examples.
