@@ -32,7 +32,7 @@ raw_map(data = df$vals,
     scale_fill_viridis()
 
 ```
-![platemap_img](/graphics/example_platemap.png")
+<img, src="/graphics/example_platemap.png", height="250">
 
 
 See the [vignette](https://gist.github.com/Swarchal/b938933ae9ded94b3c14d6485b27cf69) for more examples.
