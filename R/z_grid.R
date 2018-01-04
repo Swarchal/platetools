@@ -47,24 +47,24 @@ z_grid <- function(data, well,
     if (plate == 96L){
         plt <- plt96(platemap) +
                 theme_bw() +
-                theme(panel.margin.x = unit(1, "lines"),
-            panel.margin.y = unit(0.5, "lines")) + # increase spacing between facets
+                theme(panel.spacing.x = unit(1, "lines"),
+            panel.spacing.y = unit(0.5, "lines")) + # increase spacing between facets
                 facet_wrap(~plate_label,
             ncol = ncols,
             scales = 'free')
     } else if (plate == 384L){
         plt <- plt384(platemap) +
             theme_bw() +
-            theme(panel.margin.x = unit(1, "lines"),
-        panel.margin.y = unit(1, "lines")) + # increase spacing between facets
+            theme(panel.spacing.x = unit(1, "lines"),
+        panel.spacing.y = unit(1, "lines")) + # increase spacing between facets
             facet_wrap(~plate_label,
         ncol = ncols,
         scales = 'free')
     } else if (plate == 1536L) {
         plt <- plt1536(platemap) +
             theme_bw() +
-            theme(panel.margin.x = unit(1, "lines"),
-                panel.margin.y = unit(1, "lines")) + # increase spacing between facets
+            theme(panel.spacing.x = unit(1, "lines"),
+                panel.spacing.y = unit(1, "lines")) + # increase spacing between facets
             facet_wrap(~plate_label,
                 ncol = ncols,
                 scales = "free")

@@ -36,10 +36,6 @@ plate_map <- function(data, well){
 }
 
 
-
-
-
-
 #' creates dataframe of row, column, and scaled data from well IDs
 #'
 #' internal function
@@ -87,13 +83,13 @@ plate_map_grid <- function(data, well, plate_id){
 plate_map_grid_scale <- function(data, well, plate_id, each){
     df <- plate_map_grid(data, well, plate_id)
 
-    if (each == FALSE){
-    df$values <- scale(df$values)
-    } else if (each == TRUE){
-    df <- df %>% group_by_("plate_label") %>%
-    mutate_(values = "scale(values)[,]") %>% #STOP SCALE RETURNING STUPID ATTRIBUTES!
-    ungroup() %>%
-    as.data.frame()
+    if (each == FALSE) {
+        df$values <- scale(df$values)
+    } else if (each == TRUE) {
+        df <- df %>% group_by_("plate_label") %>%
+            mutate_(values = "scale(values)[,]") %>% #STOP SCALE RETURNING STUPID ATTRIBUTES!
+            ungroup() %>%
+            as.data.frame()
     }
     return(df)
 }

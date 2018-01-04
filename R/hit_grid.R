@@ -76,8 +76,8 @@ hit_grid <- function(data, well,
       plt <- plt96(platemap) +
           scale_fill_manual("hit", values = my_colours) +
           theme_bw() +
-          theme(panel.margin.x = unit(1, "lines"),
-          panel.margin.y = unit(0.5, "lines")) + # increase spacing between facets
+          theme(panel.spacing.x = unit(1, "lines"),
+          panel.spacing.y = unit(0.5, "lines")) + # increase spacing between facets
           facet_wrap(~plate_label,
                      ncol = ncols,
                      scales = 'free')
@@ -86,8 +86,8 @@ hit_grid <- function(data, well,
       plt <- plt384(platemap) +
           scale_fill_manual("hit", values = my_colours) +
           theme_bw() +
-          theme(panel.margin.x = unit(1, "lines"),
-          panel.margin.y = unit(0.5, "lines")) + # increase spacing between facets
+          theme(panel.spacing.x = unit(1, "lines"),
+          panel.spacing.y = unit(0.5, "lines")) + # increase spacing between facets
           facet_wrap(~plate_label,
                      ncol = ncols,
                      scales = 'free')
@@ -95,8 +95,8 @@ hit_grid <- function(data, well,
     plt <- plt1536(platemap) +
         scale_fill_manual("hit", values = my_colours) +
         theme_bw() +
-        theme(panel.margin.x = unit(1, "lines"),
-        panel.margin.y = unit(0.5, "lines")) # increase spacing between facets
+        theme(panel.spacing.x = unit(1, "lines"),
+        panel.spacing.y = unit(0.5, "lines")) # increase spacing between facets
         facet_wrap(~plate_label,
                    ncol = ncols,
                    scales = "free")

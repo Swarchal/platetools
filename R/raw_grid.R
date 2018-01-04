@@ -48,8 +48,8 @@ raw_grid <- function(data, well,
     # produce a plate map in ggplot (96-well format)
     plt<- plt96(platemap) +
         theme_bw() +
-        theme(panel.margin.x = unit(1, "lines"),
-        panel.margin.y = unit(0.5, "lines")) + # increase spacing between facets
+        theme(panel.spacing.x = unit(1, "lines"),
+        panel.spacing.y = unit(0.5, "lines")) + # increase spacing between facets
         facet_wrap(~plate_label,
             ncol = ncols,
             scales = 'free')
@@ -58,8 +58,8 @@ raw_grid <- function(data, well,
     # produce a plate map in ggplot (384-well format)
     plt <- plt384(platemap) +
         theme_bw() +
-        theme(panel.margin.x = unit(1, "lines"),
-        panel.margin.y = unit(0.5, "lines")) + # increase spacing between facets
+        theme(panel.spacing.x = unit(1, "lines"),
+        panel.spacing.y = unit(0.5, "lines")) + # increase spacing between facets
         facet_wrap(~plate_label,
             ncol = ncols,
             scales = 'free')
@@ -67,8 +67,8 @@ raw_grid <- function(data, well,
     } else if (plate == 1536L){
     plt <- plt1536(platemap) +
         theme_bw() +
-        theme(panel.margin.x = unit(1, "lines"),
-        panel.margin.y = unit(0.5, "lines")) + # increase spacing between facets
+        theme(panel.spacing.x = unit(1, "lines"),
+        panel.spacing.y = unit(0.5, "lines")) + # increase spacing between facets
         facet_wrap(~plate_label,
             ncol = ncols,
             scales = 'free')
