@@ -5,6 +5,8 @@ r:
     - devel
 cache: packages
 sudo: required
+r_packages:
+    - devtools
 r_github_packages:
     - jimhester/covr
 after_success:
