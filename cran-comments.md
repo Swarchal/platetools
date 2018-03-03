@@ -1,6 +1,6 @@
-## YYYY-MM-DD
+## 2018-03-03
 
-**Version 0.02 to 0.03**
+**Version 0.0.2 to 0.1.0**
 
 - Add set_block function (contributed by @charles-plessy)
 - Fix deprecatation warning for `panel.margin`
