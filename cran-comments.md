@@ -1,3 +1,9 @@
+## 2018-06-25
+
+**Version 0.1.1**
+
+- Fix failures caused by new ggplot2 version
+
 ## 2018-03-03
 
 **Version 0.0.2 to 0.1.0**
