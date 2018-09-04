@@ -7,7 +7,8 @@
 #' @param data Numerical values in the form of a vector to be normalised
 #' @param well Vector of well identifiers, e.g "A01"
 #' @param plate integer, 96, 384 or 1536
-#' @param normalise Not currently used
+#' @param normalise Boolean, if TRUE then the residual values will be divded by
+#'                 the plate median absolute deviation as per Malo et al.
 #' @return ggplot plot
 #'
 #' @import ggplot2
@@ -44,6 +45,11 @@
     check_plate_input(well, plate)
 
     df <- med_smooth(platemap, plate)
+
+    if (normalise) {
+        # divide by the plate median absolute deivation
+        df$residual <- df$residual / mad(df$residual)
+    }
 
     df$values <- scale(df$residual)
     platemap <- plate_map(df$values, df$well)

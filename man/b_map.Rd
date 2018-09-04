@@ -11,7 +11,8 @@ b_map(data, well, normalise = FALSE, plate = 96)
 
 \item{well}{Vector of well identifiers, e.g "A01"}
 
-\item{normalise}{Not currently used}
+\item{normalise}{Boolean, if TRUE then the residual values will be divded by
+the plate median absolute deviation as per Malo et al.}
 
 \item{plate}{integer, 96, 384 or 1536}
 }
@@ -39,4 +40,3 @@ b_map(data = df_384$vals,
      well = df_384$well,
      plate = 384)
 }
-
