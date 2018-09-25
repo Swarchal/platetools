@@ -48,7 +48,7 @@
 
     if (normalise) {
         # divide by the plate median absolute deivation
-        df$residual <- df$residual / mad(df$residual)
+        df$residual <- df$residual / stats::mad(df$residual)
     }
 
     df$values <- scale(df$residual)
