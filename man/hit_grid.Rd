@@ -5,7 +5,7 @@
 \title{Plots multiple platemaps with and identifies hits}
 \usage{
 hit_grid(data, well, plate_id, threshold = 2, ncols = 2, plate = 96,
-  each = FALSE, palette = "Spectral")
+  each = FALSE, scale_each = FALSE, palette = "Spectral")
 }
 \arguments{
 \item{data}{Numerical values to be scaled and plotted}
@@ -21,8 +21,11 @@ for a well to be classified as a 'hit'. Default it +/- 2 SD}
 
 \item{plate}{Number of wells in the complete plates (96, 384 or 1536)}
 
-\item{each}{boolean, if true scales each plate individually, if false will
-scale the pooled values of \code{data}}
+\item{each}{boolean, allowed for backwards compatibility, \code{scale_each}
+is now the preferred argument name}
+
+\item{scale_each}{boolean, if true scales each plate individually, if false
+will scale the pooled values of \code{data}}
 
 \item{palette}{RColorBrewer palette}
 }
@@ -51,4 +54,3 @@ hit_grid(data = df$vals,
     plate = 96,
     each = FALSE)
 }
-

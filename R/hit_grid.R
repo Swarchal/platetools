@@ -11,8 +11,10 @@
 #'  for a well to be classified as a 'hit'. Default it +/- 2 SD
 #' @param ncols Number of columns in the grid of plates
 #' @param plate Number of wells in the complete plates (96, 384 or 1536)
-#' @param each boolean, if true scales each plate individually, if false will
-#'     scale the pooled values of \code{data}
+#' @param scale_each boolean, if true scales each plate individually, if false
+#'      will scale the pooled values of \code{data}
+#' @param each boolean, allowed for backwards compatibility, \code{scale_each}
+#'      is now the preferred argument name
 #' @param palette RColorBrewer palette
 #'
 #' @return ggplot plot
@@ -45,10 +47,19 @@ hit_grid <- function(data, well,
                     ncols = 2,
                     plate = 96,
                     each = FALSE,
+                    scale_each = FALSE,
                     palette = "Spectral"){
 
+    # handle deprecated `each` argument
+    # if `each` argument is used then raise a warning but set `scale_each` to use
+    # the value passed to each and run anyway
+    if (!missing(each)) {
+        warning("argument 'each' has been deprecated, you should use 'scale_each' in the future")
+        scale_each <- each
+    }
+
     # normalised across entire range of values
-    platemap <- plate_map_grid_scale(data, well, plate_id, each)
+    platemap <- plate_map_grid_scale(data, well, plate_id, scale_each)
     platemap$hit <- NA
 
     # calculate whether values are beyond the threshold; defined as hit or null

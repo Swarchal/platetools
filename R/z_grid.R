@@ -8,8 +8,10 @@
 #' @param plate_id Vector of plate identifiers e.g "Plate_1"
 #' @param ncols Number of columns to display multiple heatmaps
 #' @param plate Number of wells in complete plate (96, 384 or 1569)
-#' @param each boolean, if true scales each plate individually, if false will
-#'     scale the pooled values of \code{data}
+#' @param scale_each boolean, if true scales each plate individually, if false
+#'      will scale the pooled values of \code{data}
+#' @param each boolean, allowed for backwards compatibility, \code{scale_each}
+#'      is now the preferred argument name
 #'
 #' @return ggplot plot
 #'
@@ -37,12 +39,19 @@ z_grid <- function(data, well,
                    plate_id,
                    ncols = 2,
                    plate = 96,
-                   each = FALSE){
+                   each = FALSE,
+                   scale_each = FALSE){
 
     stopifnot(is.vector(data))
 
+    # handle deprecated `each` argument
+    if (!missing(each)) {
+        warning("argument 'each' has been deprecated, you should use 'scale_each' in the future")
+        scale_each <- each
+    }
+
     # transform well labels into row-column values
-    platemap <- plate_map_grid_scale(data, well, plate_id, each)
+    platemap <- plate_map_grid_scale(data, well, plate_id, scale_each)
 
     if (plate == 96L){
         plt <- plt96(platemap) +
