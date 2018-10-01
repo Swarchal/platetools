@@ -23,4 +23,3 @@ Annotates a dataframe containined well identifiers with metadata in the
 form of a platemap matrix, matching the existing well-labels to the well
 position in the platemap
 }
-

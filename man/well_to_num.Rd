@@ -32,4 +32,3 @@ well_to_num("P12", plate = 384, style = "snake")
 wells <- c("A01", "A02", "A03")
 well_to_num(wells)
 }
-

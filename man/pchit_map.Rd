@@ -38,4 +38,3 @@ pchit_map(data = df[, 2:4],
           well = df$wells,
           threshold = 1.5)
 }
-

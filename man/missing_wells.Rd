@@ -25,4 +25,3 @@ df <- data.frame(vals, wells)
 df_missing <- df[-c(1:10), ]
 missing_wells(df_missing, "wells")
 }
-

@@ -27,4 +27,3 @@ b_score(data = df$vals,
         well = df$well,
         plate = 96)
 }
-

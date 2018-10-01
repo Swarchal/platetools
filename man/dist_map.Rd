@@ -17,4 +17,3 @@ ggplot plot
 \description{
 Produces distribution plots facetted in a plate-layout format.
 }
-

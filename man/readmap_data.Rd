@@ -15,4 +15,3 @@ readmap_data
 example data in a plate map form
 }
 \keyword{datasets}
-

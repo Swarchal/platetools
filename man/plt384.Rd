@@ -15,4 +15,3 @@ ggplot object
 \description{
 internal function
 }
-

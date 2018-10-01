@@ -14,4 +14,3 @@ check_plate_input(well, plate)
 \description{
 checks plate input for dodgy well plate combinations
 }
-

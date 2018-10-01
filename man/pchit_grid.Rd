@@ -43,4 +43,3 @@ pchit_grid(data = df[,3:4],
   plate_id = df$plate,
   plate = 96)
 }
-

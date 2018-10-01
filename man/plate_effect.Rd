@@ -16,4 +16,3 @@ Given a platemap produced by \code{plate_map}, this will perform
 a two way median smooth, and return the results of \code{medpolish}.
 Useful for row and column effects, as well as the raw residuals.
 }
-

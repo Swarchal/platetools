@@ -40,4 +40,3 @@ raw_grid(data = df$vals,
     plate_id = df$plate,
     plate = 96)
 }
-

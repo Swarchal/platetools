@@ -19,4 +19,3 @@ Given a list of dataframes with the same columns, this function will row bind
 them together, and if passed a \code{col_name} arguement, will produce a
 column containing their original element name
 }
-

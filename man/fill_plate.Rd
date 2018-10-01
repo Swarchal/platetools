@@ -17,7 +17,7 @@ fill_plate(df, well, plate = 96)
 dataframe
 }
 \description{
-Fills in missing wells with rows of NA values. Useful for any functions 
+Fills in missing wells with rows of NA values. Useful for any functions
 that require a complete plate such as `b_score`.
 }
 \examples{
@@ -26,4 +26,3 @@ df <- data.frame(wells, vals)
 df_missing <- df[-c(1:10), ]
 fill_plate(df_missing, "wells")
 }
-

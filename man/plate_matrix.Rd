@@ -29,4 +29,3 @@ x <- rnorm(384)
 wells <- num_to_well(1:384, plate = 384)
 plate_matrix(data = x, well = wells, plate = 384)
 }
-

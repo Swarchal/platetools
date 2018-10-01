@@ -12,4 +12,3 @@ is_1536(well)
 \description{
 internal 1536 plate function for plate_map
 }
-

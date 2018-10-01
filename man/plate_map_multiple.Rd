@@ -15,4 +15,3 @@ plate_map_multiple(data, well)
 Generates a dataframe for multiple features, given a wellID column and multiple
 features
 }
-
