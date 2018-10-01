@@ -7,6 +7,7 @@
 #'
 #' @param platemap dataframe produced by \code{plate_map}
 #' @param plate numeric, number of wells in plate, either 96 or 384
+#' @param ... additional arguments to \code{medpolish}
 #'
 #' @return A dataframe consisting of two column, wellID and
 #'         polished numeric values
@@ -16,7 +17,7 @@
 #' @export
 
 
-med_smooth <- function(platemap, plate){
+med_smooth <- function(platemap, plate, ...){
 
     if (plate == 96L){
         # transform into 12*8 matrix (96-well plate)
@@ -45,7 +46,8 @@ med_smooth <- function(platemap, plate){
     # median polish of the data
     data_pol <- medpolish(mat_plate_map,
                           na.rm = TRUE,
-                          trace.iter = FALSE)
+                          trace.iter = FALSE,
+                          ...)
 
     # transpose of residual matrix (as counts in column-wise fashion)
     # now well numbers correspond i.e t_out[12] = A12, t_out[13] = B01

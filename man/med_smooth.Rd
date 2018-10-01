@@ -4,12 +4,14 @@
 \alias{med_smooth}
 \title{2-way median smooth}
 \usage{
-med_smooth(platemap, plate)
+med_smooth(platemap, plate, ...)
 }
 \arguments{
 \item{platemap}{dataframe produced by \code{plate_map}}
 
 \item{plate}{numeric, number of wells in plate, either 96 or 384}
+
+\item{...}{additional arguments to \code{medpolish}}
 }
 \value{
 A dataframe consisting of two column, wellID and
@@ -21,4 +23,3 @@ a dataframe with after values have been transformed into
 a matrix mirroring the plate structure and undergoing a
 2-way median polish to remove row or column effects
 }
-

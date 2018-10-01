@@ -11,6 +11,7 @@
 #' @param threshold Standard deviations from the plate average to indicate a hit.
 #'      default is set to +/- 2 SD.
 #' @param palette RColorBrewer palette
+#' @param ... additional arguments to be passed to \code{medpolish}
 #'
 #' @return ggplot plot
 #'
@@ -31,7 +32,8 @@
 bhit_map <- function(data, well,
                      plate = 96,
                      threshold = 2,
-                     palette = "Spectral"){
+                     palette = "Spectral",
+                     ...){
 
     # need to transform columns of wellID and data into
     # matrix corresponding to well positions:
@@ -69,7 +71,8 @@ bhit_map <- function(data, well,
     # median polish of the data
     data_pol <- medpolish(mat_plate_map,
                           na.rm = TRUE,
-                          trace.iter=FALSE)
+                          trace.iter=FALSE,
+                          ...)
 
     # transpose of residual matrix (as counts in column-wise fashion)
     # now well numbers correspond i.e t_out[12] = A12, t_out[13] = B01

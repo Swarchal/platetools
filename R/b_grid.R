@@ -9,6 +9,7 @@
 #' @param well Vector of well identifiers e.g "A01"
 #' @param plate Number of wells in complete plate (96, 384 or 1536)
 #' @param plate_id Vector of plate identifiers e.g "Plate_1"
+#' @param ... additional arguments to be passed to \code{medpolish}
 #' @return ggplot plot
 #'
 #' @import ggplot2
@@ -30,7 +31,7 @@
 #'     plate_id = df$plate,
 #'     plate = 96)
 
-b_grid <- function(data, well, plate_id, plate = 96) {
+b_grid <- function(data, well, plate_id, plate = 96, ...) {
 
     stopifnot(is.vector(data))
 
@@ -47,7 +48,7 @@ b_grid <- function(data, well, plate_id, plate = 96) {
 
     # apply med_smooth to each dataframe, split by plate_id
     med_smooth_list <- lapply(platemap_split, function(x){
-        med_smooth(x, plate = plate)
+        med_smooth(x, plate = plate, ...)
     })
 
     # list to dataframe

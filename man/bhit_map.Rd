@@ -36,4 +36,3 @@ bhit_map(data = df$vals,
    plate = 384,
    threshold = 3)
 }
-

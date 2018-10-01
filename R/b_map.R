@@ -9,6 +9,7 @@
 #' @param plate integer, 96, 384 or 1536
 #' @param normalise Boolean, if TRUE then the residual values will be divded by
 #'                 the plate median absolute deviation as per Malo et al.
+#' @param ... additional arguments to be passed to \code{medpolish}
 #' @return ggplot plot
 #'
 #' @import ggplot2
@@ -33,7 +34,8 @@
 
  b_map <- function(data, well,
                   normalise = FALSE,
-                  plate = 96) {
+                  plate = 96,
+                  ...) {
     stopifnot(is.vector(data))
 
     # need to transform columns of wellID and data into
@@ -44,7 +46,7 @@
 
     check_plate_input(well, plate)
 
-    df <- med_smooth(platemap, plate)
+    df <- med_smooth(platemap, plate, ...)
 
     if (normalise) {
         # divide by the plate median absolute deivation
