@@ -4,7 +4,7 @@
 \alias{b_grid}
 \title{Plots multiple b-scored normalised platemaps}
 \usage{
-b_grid(data, well, plate_id, plate = 96)
+b_grid(data, well, plate_id, plate = 96, ...)
 }
 \arguments{
 \item{data}{Numerical values to be plotted}
@@ -14,6 +14,8 @@ b_grid(data, well, plate_id, plate = 96)
 \item{plate_id}{Vector of plate identifiers e.g "Plate_1"}
 
 \item{plate}{Number of wells in complete plate (96, 384 or 1536)}
+
+\item{...}{additional arguments to be passed to \code{medpolish}}
 }
 \value{
 ggplot plot

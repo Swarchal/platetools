@@ -71,7 +71,7 @@ z_grid <- function(data, well,
             theme(panel.spacing.x = unit(1, "lines"),
                 panel.spacing.y = unit(1, "lines")) + # increase spacing between facets
             facet_wrap(~plate_label, ncol = ncols)
-    } else stop("Invalid argument for 'plate'. \nOptions: 96 or 384.",
+    } else stop("Invalid argument for 'plate'. \nOptions: 96, 384 or 1536.",
     call. = FALSE)
 
     return(plt)

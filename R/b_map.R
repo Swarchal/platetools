@@ -68,7 +68,7 @@
     plt <- plt1536(platemap) +
         theme_bw()
     } else {
-        stop("Not a valid plate format. Enter either 96, 384 or 1536.",
+        stop("Invalid argument for `plate`. \nOptions: 96, 384 or 1536.",
              call. = FALSE)
     }
 

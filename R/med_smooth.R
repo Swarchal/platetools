@@ -100,7 +100,8 @@ plate_effect <- function(platemap, plate) {
                                 ncol = 48,
                                 byrow = TRUE)
     } else {
-    stop("Not a plate format")
+        stop("Invalid argument for `plate`. \nOptions: 96, 384 or 1536.",
+             call. = FALSE)
     }
     data_pol <- medpolish(mat_plate_map,
                           na.rm = TRUE,
@@ -132,8 +133,6 @@ plate_effect <- function(platemap, plate) {
 #'         plate = 96)
 
 b_score <- function(data, well, plate){
-
     platemap <- plate_map(data, well)
-
     med_smooth(platemap, plate)
 }
