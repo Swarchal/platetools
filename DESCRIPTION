@@ -15,7 +15,7 @@ Imports:
     dplyr,
     plyr,
     RColorBrewer,
-    ggplot2
+    ggplot2 (>= 2.2.0)
 Suggests:
     testthat,
     viridis
