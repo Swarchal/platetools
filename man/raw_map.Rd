@@ -4,7 +4,7 @@
 \alias{raw_map}
 \title{Plots a platemap with heatmap of raw values}
 \usage{
-raw_map(data, well, plate = 96)
+raw_map(data, well, plate = 96, ...)
 }
 \arguments{
 \item{data}{Numerical values to be plotted}
@@ -12,6 +12,8 @@ raw_map(data, well, plate = 96)
 \item{well}{Vector of well identifiers e.g "A01"}
 
 \item{plate}{Number of wells in complete plate (96, 384 or 1536)}
+
+\item{...}{additional parameters to plot wrappers}
 }
 \value{
 ggplot plot
