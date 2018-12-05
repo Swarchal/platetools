@@ -31,9 +31,9 @@
 #' df <- rbind(df01, df02)
 #'
 #' pchit_grid(data = df[,3:4],
-#'   well = df$well,
-#'   plate_id = df$plate,
-#'   plate = 96)
+#'            well = df$well,
+#'            plate_id = df$plate,
+#'            plate = 96)
 
 pchit_grid <- function(data, well, plate_id, ...) {
     pca_data <- prcomp(data) # pca of data

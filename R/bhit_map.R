@@ -29,11 +29,8 @@
 #'    plate = 384,
 #'    threshold = 3)
 
-bhit_map <- function(data, well,
-                     plate = 96,
-                     threshold = 2,
-                     palette = "Spectral",
-                     ...){
+bhit_map <- function(data, well, plate = 96, threshold = 2,
+                     palette = "Spectral", ...){
 
     # need to transform columns of wellID and data into
     # matrix corresponding to well positions:

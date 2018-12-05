@@ -4,7 +4,7 @@
 \alias{pc_map}
 \title{Principal component heatmap in a plate layout}
 \usage{
-pc_map(data, well, plate = 96)
+pc_map(data, well, plate = 96, ...)
 }
 \arguments{
 \item{data}{Vector of numerical data to calculate the first principal component}
@@ -12,6 +12,8 @@ pc_map(data, well, plate = 96)
 \item{well}{Vector of well identifiers e.g "A01"}
 
 \item{plate}{Number of wells in complete plate (96, 384 or 1536}
+
+\item{...}{additional parameters to platetools::z_map}
 }
 \value{
 gplot plot

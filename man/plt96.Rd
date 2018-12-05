@@ -4,10 +4,14 @@
 \alias{plt96}
 \title{ggplot plate object}
 \usage{
-plt96(platemap)
+plt96(platemap, size = 10, shape = 21)
 }
 \arguments{
 \item{platemap}{platemap dataframe produced by \code{plate_map}}
+
+\item{size}{int, size parameter for ggplot2::geom_point}
+
+\item{shape}{int, shape parameter for ggplot2::geom_point}
 }
 \value{
 ggplot object

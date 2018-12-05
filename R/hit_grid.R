@@ -16,6 +16,7 @@
 #' @param each boolean, allowed for backwards compatibility, \code{scale_each}
 #'      is now the preferred argument name
 #' @param palette RColorBrewer palette
+#' @param ... additional arguments for plot wrappers
 #'
 #' @return ggplot plot
 #'
@@ -41,14 +42,8 @@
 #'     each = FALSE)
 
 
-hit_grid <- function(data, well,
-                    plate_id,
-                    threshold = 2,
-                    ncols = 2,
-                    plate = 96,
-                    each = FALSE,
-                    scale_each = FALSE,
-                    palette = "Spectral"){
+hit_grid <- function(data, well, plate_id, threshold = 2, ncols = 2, plate = 96,
+                    each = FALSE, scale_each = FALSE, palette = "Spectral", ...){
 
     # handle deprecated `each` argument
     # if `each` argument is used then raise a warning but set `scale_each` to use
@@ -81,30 +76,30 @@ hit_grid <- function(data, well,
     my_cols <- brewer.pal(3, palette)
     my_colours <- c(hit = my_cols[1], neg_hit = my_cols[3], null = my_cols[2])
 
-
     if (plate == 96L){
-      # produce a 96-well plate map layout in ggplot
-      plt <- plt96(platemap) +
+      plt <- plt96(platemap, ...) +
           scale_fill_manual("hit", values = my_colours) +
           theme_bw() +
           theme(panel.spacing.x = unit(1, "lines"),
-          panel.spacing.y = unit(0.5, "lines")) + # increase spacing between facets
+                panel.spacing.y = unit(0.5, "lines")) + # increase spacing between facets
           facet_wrap(~plate_label, ncol = ncols)
+
       } else if (plate == 384L){
-      # produce a 384-well plate map layout in ggplot
-      plt <- plt384(platemap) +
+      plt <- plt384(platemap, ...) +
           scale_fill_manual("hit", values = my_colours) +
           theme_bw() +
           theme(panel.spacing.x = unit(1, "lines"),
-          panel.spacing.y = unit(0.5, "lines")) + # increase spacing between facets
+               panel.spacing.y = unit(0.5, "lines")) + # increase spacing between facets
           facet_wrap(~plate_label, ncol = ncols)
+
     } else if (plate == 1536L){
-    plt <- plt1536(platemap) +
+    plt <- plt1536(platemap, ...) +
         scale_fill_manual("hit", values = my_colours) +
         theme_bw() +
         theme(panel.spacing.x = unit(1, "lines"),
-        panel.spacing.y = unit(0.5, "lines")) # increase spacing between facets
+              panel.spacing.y = unit(0.5, "lines")) # increase spacing between facets
         facet_wrap(~plate_label, ncol = ncols)
+
     } else stop("Not a valid plate format. Enter either 96, 384 or 1536.", call. = FALSE)
 
   return(plt)

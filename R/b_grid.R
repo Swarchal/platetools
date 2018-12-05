@@ -17,19 +17,19 @@
 #'
 #' @examples
 #' df01 <- data.frame(well = num_to_well(1:96),
-#'   vals = rnorm(96),
-#'   plate = 1)
+#'                    vals = rnorm(96),
+#'                    plate = 1)
 #'
 #' df02 <- data.frame(well = num_to_well(1:96),
-#'   vals = rnorm(96),
-#'   plate = 2)
+#'                    vals = rnorm(96),
+#'                    plate = 2)
 #'
 #' df <- rbind(df01, df02)
 #'
 #' b_grid(data = df$vals,
-#'     well = df$well,
-#'     plate_id = df$plate,
-#'     plate = 96)
+#'        well = df$well,
+#'        plate_id = df$plate,
+#'        plate = 96)
 
 b_grid <- function(data, well, plate_id, plate = 96, ...) {
 
@@ -37,7 +37,6 @@ b_grid <- function(data, well, plate_id, plate = 96, ...) {
 
     # need to group_by plate_id, median polish, then return data.frame
     # that can be passed to ggplot and use raw_grid
-
     platemap <- plate_map_grid(data, well, plate_id)
 
     # force to factor
@@ -57,7 +56,8 @@ b_grid <- function(data, well, plate_id, plate = 96, ...) {
 
     raw_grid(data = med_smooth_df$residual,
              well = med_smooth_df$well,
-             plate_id = med_smooth_df$plate_label)
+             plate_id = med_smooth_df$plate_label,
+             plate = plate)
 }
 
 

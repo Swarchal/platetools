@@ -5,7 +5,7 @@
 \title{Plots multiple platemaps with heatmap of scaled values}
 \usage{
 z_grid(data, well, plate_id, ncols = 2, plate = 96, each = FALSE,
-  scale_each = FALSE)
+  scale_each = FALSE, ...)
 }
 \arguments{
 \item{data}{Numerical values to be plotted}
@@ -23,6 +23,8 @@ is now the preferred argument name}
 
 \item{scale_each}{boolean, if true scales each plate individually, if false
 will scale the pooled values of \code{data}}
+
+\item{...}{additional parameters to plot wrappers}
 }
 \value{
 ggplot plot

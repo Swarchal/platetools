@@ -4,7 +4,7 @@
 \alias{raw_grid}
 \title{Plots multiple platemaps with heatmap of raw values}
 \usage{
-raw_grid(data, well, plate_id, ncols = 2, plate = 96)
+raw_grid(data, well, plate_id, ncols = 2, plate = 96, ...)
 }
 \arguments{
 \item{data}{Numerical values to be plotted}
@@ -16,6 +16,8 @@ raw_grid(data, well, plate_id, ncols = 2, plate = 96)
 \item{ncols}{Number of columns to display multiple heatmaps}
 
 \item{plate}{Number of wells in complete plate (96, 384 or 1536)}
+
+\item{...}{additional parameters to plot wrappers}
 }
 \value{
 ggplot plot

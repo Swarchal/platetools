@@ -32,26 +32,17 @@
 #' df <- rbind(df01, df02)
 #'
 #' pc_grid(data = df[, 3:4],
-#'     well = df$well,
-#'     plate_id = df$plate,
-#'     plate = 96)
+#'         well = df$well,
+#'         plate_id = df$plate,
+#'         plate = 96)
 
 
-pc_grid <- function(data, well,
-                    plate_id,
-                    ncols = 2,
-                    plate = 96,
-                    ...){
+pc_grid <- function(data, well, plate_id, ncols = 2, plate = 96, ...){
 
       pca_data <- prcomp(data) # pca of data
       pc1 <- pca_data$x[, 1] # take first principal component
 
-      pc_grid <- z_grid(pc1,
-                        well,
-                        plate_id,
-                        ncols,
-                        plate,
-                        ...)
+      pc_grid <- z_grid(pc1, well, plate_id, ncols, plate, ...)
 
       return(pc_grid)
 }

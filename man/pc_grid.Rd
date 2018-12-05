@@ -42,7 +42,7 @@ df02 <- data.frame(
 df <- rbind(df01, df02)
 
 pc_grid(data = df[, 3:4],
-    well = df$well,
-    plate_id = df$plate,
-    plate = 96)
+        well = df$well,
+        plate_id = df$plate,
+        plate = 96)
 }

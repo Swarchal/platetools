@@ -8,6 +8,7 @@
 #' @param plate_id Vector of plate identifiers e.g "Plate_1"
 #' @param ncols Number of columns to display multiple heatmaps
 #' @param plate Number of wells in complete plate (96, 384 or 1536)
+#' @param ... additional parameters to plot wrappers
 #'
 #' @return ggplot plot
 #'
@@ -31,10 +32,7 @@
 #'     plate = 96)
 
 
-raw_grid <- function(data, well,
-                     plate_id,
-                     ncols = 2,
-                     plate = 96){
+raw_grid <- function(data, well, plate_id, ncols = 2, plate = 96, ...){
 
     ## multiple platemap plots in a single figure using facet_wrap
 
@@ -45,26 +43,24 @@ raw_grid <- function(data, well,
     platemap <- plate_map_grid(data, well, plate_id)
 
     if (plate == 96) {
-    # produce a plate map in ggplot (96-well format)
-    plt<- plt96(platemap) +
+    plt<- plt96(platemap, ...) +
         theme_bw() +
         theme(panel.spacing.x = unit(1, "lines"),
-        panel.spacing.y = unit(0.5, "lines")) + # increase spacing between facets
+              panel.spacing.y = unit(0.5, "lines")) + # increase spacing between facets
         facet_wrap(~plate_label, ncol = ncols)
 
     } else if (plate == 384L){
-    # produce a plate map in ggplot (384-well format)
-    plt <- plt384(platemap) +
+    plt <- plt384(platemap, ...) +
         theme_bw() +
         theme(panel.spacing.x = unit(1, "lines"),
-        panel.spacing.y = unit(0.5, "lines")) + # increase spacing between facets
+              panel.spacing.y = unit(0.5, "lines")) + # increase spacing between facets
         facet_wrap(~plate_label, ncol = ncols)
 
     } else if (plate == 1536L){
-    plt <- plt1536(platemap) +
+    plt <- plt1536(platemap, ...) +
         theme_bw() +
         theme(panel.spacing.x = unit(1, "lines"),
-        panel.spacing.y = unit(0.5, "lines")) + # increase spacing between facets
+              panel.spacing.y = unit(0.5, "lines")) + # increase spacing between facets
         facet_wrap(~plate_label, ncol = ncols)
 
     } else stop("Invalid argument for 'plate'. \nOption: 96 or 384.",

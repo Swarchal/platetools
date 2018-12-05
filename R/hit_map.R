@@ -9,6 +9,7 @@
 #' @param threshold Numerical value of standard deviations from the mean
 #'   for a well to be classified as a 'hit'. Default it +/- 2 SD
 #' @param palette RColorBrewer palette
+#' @param ... additional parameters for plot wrappers
 #'
 #' @import ggplot2
 #' @importFrom RColorBrewer brewer.pal
@@ -19,19 +20,17 @@
 #'
 #' @examples
 #' df <- data.frame(vals = rnorm(1:384),
-#'   well = num_to_well(1:384, plate = 384))
+#'                  well = num_to_well(1:384, plate = 384))
 #'
 #' hit_map(data = df$vals,
-#'        well = df$well,
-#'        plate = 384,
-#'        threshold = 3)
+#'         well = df$well,
+#'         plate = 384,
+#'         threshold = 3)
 
 
 
-hit_map <- function(data, well,
-     plate = 96,
-     threshold = 2,
-     palette = "Spectral"){
+hit_map <- function(data, well, plate = 96, threshold = 2,
+                    palette = "Spectral", ...){
 
     stopifnot(is.vector(data))
 
@@ -62,20 +61,22 @@ hit_map <- function(data, well,
     platemap$values <- platemap$hit
 
     if (plate == 96L){
-        # produce a 96-well plate map layout in ggplot
-        plt <- plt96(platemap) +
+
+        plt <- plt96(platemap, ...) +
             scale_fill_manual("hit", values = my_colours) +
             theme_bw()
     } else if (plate == 384L){
-        # produce a 384-well plate map layout in ggplot
-        plt <- plt384(platemap) +
+
+        plt <- plt384(platemap, ...) +
             scale_fill_manual("hit", values = my_colours) +
             theme_bw()
     } else if (plate == 1536L){
-        plt <- plt1536(platemap) +
+
+        plt <- plt1536(platemap, ...) +
             scale_fill_manual("hit", values = my_colours) +
             theme_bw()
     } else {
+
         stop("Not a valid plate format. Either 96, 384 or 1536.", call. = FALSE)
     }
     return(plt)

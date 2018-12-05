@@ -4,7 +4,7 @@
 \alias{hit_map}
 \title{Platemap to identify 'hits' in a screen}
 \usage{
-hit_map(data, well, plate = 96, threshold = 2, palette = "Spectral")
+hit_map(data, well, plate = 96, threshold = 2, palette = "Spectral", ...)
 }
 \arguments{
 \item{data}{Vector of numerical values to score}
@@ -17,6 +17,8 @@ hit_map(data, well, plate = 96, threshold = 2, palette = "Spectral")
 for a well to be classified as a 'hit'. Default it +/- 2 SD}
 
 \item{palette}{RColorBrewer palette}
+
+\item{...}{additional parameters for plot wrappers}
 }
 \value{
 ggplot plot
@@ -27,10 +29,10 @@ with colours indicating wells above or below a nominated threshold.
 }
 \examples{
 df <- data.frame(vals = rnorm(1:384),
-  well = num_to_well(1:384, plate = 384))
+                 well = num_to_well(1:384, plate = 384))
 
 hit_map(data = df$vals,
-       well = df$well,
-       plate = 384,
-       threshold = 3)
+        well = df$well,
+        plate = 384,
+        threshold = 3)
 }

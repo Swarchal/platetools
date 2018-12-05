@@ -8,7 +8,7 @@
 #' @param data Vector of numerical data to calculate the first principal component
 #' @param well Vector of well identifiers e.g "A01"
 #' @param plate Number of wells in complete plate (96, 384 or 1536
-#'
+#' @param ... additional parameters to platetools::z_map
 #' @return gplot plot
 #'
 #' @export
@@ -23,9 +23,9 @@
 #'        well = df$well,
 #'        plate = 96)
 
-pc_map <- function(data, well, plate = 96){
+pc_map <- function(data, well, plate = 96, ...){
     pca_data <- prcomp(data) # pca of data
     pc1 <- pca_data$x[,1] # take first principal component
-    plot_pc_map <- z_map(pc1, well, plate)
+    plot_pc_map <- z_map(pc1, well, plate, ...)
     return(plot_pc_map)
 }

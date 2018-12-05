@@ -12,6 +12,7 @@
 #'      will scale the pooled values of \code{data}
 #' @param each boolean, allowed for backwards compatibility, \code{scale_each}
 #'      is now the preferred argument name
+#' @param ... additional parameters to plot wrappers
 #'
 #' @return ggplot plot
 #'
@@ -35,12 +36,8 @@
 #'        plate_id = df$plate,
 #'        plate = 96)
 
-z_grid <- function(data, well,
-                   plate_id,
-                   ncols = 2,
-                   plate = 96,
-                   each = FALSE,
-                   scale_each = FALSE){
+z_grid <- function(data, well, plate_id, ncols = 2, plate = 96, each = FALSE,
+                   scale_each = FALSE, ...){
 
     stopifnot(is.vector(data))
 
@@ -54,23 +51,26 @@ z_grid <- function(data, well,
     platemap <- plate_map_grid_scale(data, well, plate_id, scale_each)
 
     if (plate == 96L){
-        plt <- plt96(platemap) +
+        plt <- plt96(platemap, ...) +
                 theme_bw() +
                 theme(panel.spacing.x = unit(1, "lines"),
-            panel.spacing.y = unit(0.5, "lines")) + # increase spacing between facets
+                      panel.spacing.y = unit(0.5, "lines")) + # increase spacing between facets
                 facet_wrap(~plate_label, ncol = ncols)
+
     } else if (plate == 384L){
-        plt <- plt384(platemap) +
+        plt <- plt384(platemap, ...) +
             theme_bw() +
             theme(panel.spacing.x = unit(1, "lines"),
-        panel.spacing.y = unit(1, "lines")) + # increase spacing between facets
+                  panel.spacing.y = unit(1, "lines")) + # increase spacing between facets
             facet_wrap(~plate_label, ncol = ncols)
+
     } else if (plate == 1536L) {
-        plt <- plt1536(platemap) +
+        plt <- plt1536(platemap, ...) +
             theme_bw() +
             theme(panel.spacing.x = unit(1, "lines"),
-                panel.spacing.y = unit(1, "lines")) + # increase spacing between facets
+                  panel.spacing.y = unit(1, "lines")) + # increase spacing between facets
             facet_wrap(~plate_label, ncol = ncols)
+
     } else stop("Invalid argument for 'plate'. \nOptions: 96, 384 or 1536.",
     call. = FALSE)
 

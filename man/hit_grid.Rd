@@ -5,7 +5,7 @@
 \title{Plots multiple platemaps with and identifies hits}
 \usage{
 hit_grid(data, well, plate_id, threshold = 2, ncols = 2, plate = 96,
-  each = FALSE, scale_each = FALSE, palette = "Spectral")
+  each = FALSE, scale_each = FALSE, palette = "Spectral", ...)
 }
 \arguments{
 \item{data}{Numerical values to be scaled and plotted}
@@ -28,6 +28,8 @@ is now the preferred argument name}
 will scale the pooled values of \code{data}}
 
 \item{palette}{RColorBrewer palette}
+
+\item{...}{additional arguments for plot wrappers}
 }
 \value{
 ggplot plot

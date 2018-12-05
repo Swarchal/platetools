@@ -10,6 +10,7 @@
 #' @param threshold Threshold of +/- standard deviations form the average
 #'     to determine a hit
 #' @param palette RColorBrewer palette
+#' @param ... additional arguments to platetools::hit_map
 #'
 #' @return ggplot plot
 #'
@@ -30,20 +31,13 @@
 #'           threshold = 1.5)
 
 
-pchit_map <- function(data, well,
-                      plate = 96,
-                      threshold = 2,
-                      palette = "Spectral"){
+pchit_map <- function(data, well, plate = 96, threshold = 2,
+                      palette = "Spectral", ...){
 
     pca_data <- prcomp(data) # pca of data
     pc1 <- pca_data$x[,1] # take first principal component
 
-    pc_hit_map <- hit_map(
-        pc1,
-        well,
-        plate,
-        threshold,
-        palette)
+    pc_hit_map <- hit_map(pc1, well, plate, threshold, palette, ...)
 
     return(pc_hit_map)
 
