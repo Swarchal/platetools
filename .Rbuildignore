@@ -5,3 +5,4 @@ graphics/
 cran-comments.md
 vignette.ipynb
 .travis.yml
+changelog.md
