@@ -9,7 +9,11 @@
 #' @param well Vector of well identifiers e.g "A01"
 #' @param plate Number of wells in complete plate (96, 384 or 1536)
 #' @param plate_id Vector of plate identifiers e.g "Plate_1"
-#' @param ... additional arguments to be passed to \code{medpolish}
+#' @param eps real number greater than 0. A tolerance for divergence
+#' @param maxiter int, the maximum number of iterations
+#' @param trace.iter Boolean, should progress in convergence be reported?
+#' @param na.rm Boolean, should missing values be removed?
+#' @param ... additional parameters to plot wrappers
 #' @return ggplot plot
 #'
 #' @import ggplot2
@@ -31,7 +35,8 @@
 #'        plate_id = df$plate,
 #'        plate = 96)
 
-b_grid <- function(data, well, plate_id, plate = 96, ...) {
+b_grid <- function(data, well, plate_id, plate = 96, eps = 0.01,
+                   maxiter = 10, trace.iter = FALSE, na.rm = FALSE, ...) {
 
     stopifnot(is.vector(data))
 
@@ -47,7 +52,8 @@ b_grid <- function(data, well, plate_id, plate = 96, ...) {
 
     # apply med_smooth to each dataframe, split by plate_id
     med_smooth_list <- lapply(platemap_split, function(x){
-        med_smooth(x, plate = plate, ...)
+        med_smooth(x, plate = plate, eps = eps, maxiter = maxiter,
+                   trace.iter = trace.iter, na.rm = na.rm)
     })
 
     # list to dataframe
@@ -57,7 +63,8 @@ b_grid <- function(data, well, plate_id, plate = 96, ...) {
     raw_grid(data = med_smooth_df$residual,
              well = med_smooth_df$well,
              plate_id = med_smooth_df$plate_label,
-             plate = plate)
+             plate = plate,
+             ...)
 }
 
 

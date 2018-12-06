@@ -4,14 +4,21 @@
 \alias{med_smooth}
 \title{2-way median smooth}
 \usage{
-med_smooth(platemap, plate, ...)
+med_smooth(platemap, plate, eps = 0.01, maxiter = 10, trace.iter = FALSE,
+  na.rm = TRUE)
 }
 \arguments{
 \item{platemap}{dataframe produced by \code{plate_map}}
 
 \item{plate}{numeric, number of wells in plate, either 96 or 384}
 
-\item{...}{additional arguments to \code{medpolish}}
+\item{eps}{real number greater than 0. A tolerance for divergence}
+
+\item{maxiter}{int, the maximum number of iterations}
+
+\item{trace.iter}{Boolean, should progress in convergence be reported?}
+
+\item{na.rm}{Boolean, should missing values be removed?}
 }
 \value{
 A dataframe consisting of two column, wellID and

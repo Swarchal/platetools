@@ -4,7 +4,8 @@
 \alias{b_grid}
 \title{Plots multiple b-scored normalised platemaps}
 \usage{
-b_grid(data, well, plate_id, plate = 96, ...)
+b_grid(data, well, plate_id, plate = 96, eps = 0.01, maxiter = 10,
+  trace.iter = FALSE, na.rm = FALSE, ...)
 }
 \arguments{
 \item{data}{Numerical values to be plotted}
@@ -15,7 +16,15 @@ b_grid(data, well, plate_id, plate = 96, ...)
 
 \item{plate}{Number of wells in complete plate (96, 384 or 1536)}
 
-\item{...}{additional arguments to be passed to \code{medpolish}}
+\item{eps}{real number greater than 0. A tolerance for divergence}
+
+\item{maxiter}{int, the maximum number of iterations}
+
+\item{trace.iter}{Boolean, should progress in convergence be reported?}
+
+\item{na.rm}{Boolean, should missing values be removed?}
+
+\item{...}{additional parameters to plot wrappers}
 }
 \value{
 ggplot plot

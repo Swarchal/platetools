@@ -7,7 +7,10 @@
 #'
 #' @param platemap dataframe produced by \code{plate_map}
 #' @param plate numeric, number of wells in plate, either 96 or 384
-#' @param ... additional arguments to \code{medpolish}
+#' @param eps real number greater than 0. A tolerance for divergence
+#' @param maxiter int, the maximum number of iterations
+#' @param trace.iter Boolean, should progress in convergence be reported?
+#' @param na.rm Boolean, should missing values be removed?
 #'
 #' @return A dataframe consisting of two column, wellID and
 #'         polished numeric values
@@ -17,7 +20,8 @@
 #' @export
 
 
-med_smooth <- function(platemap, plate, ...){
+med_smooth <- function(platemap, plate, eps = 0.01, maxiter = 10,
+                       trace.iter = FALSE, na.rm = TRUE){
 
     if (plate == 96L){
         # transform into 12*8 matrix (96-well plate)
@@ -44,10 +48,8 @@ med_smooth <- function(platemap, plate, ...){
     }
 
     # median polish of the data
-    data_pol <- medpolish(mat_plate_map,
-                          na.rm = TRUE,
-                          trace.iter = FALSE,
-                          ...)
+    data_pol <- medpolish(mat_plate_map, eps = eps, na.rm = na.rm,
+                          trace.iter = trace.iter)
 
     # transpose of residual matrix (as counts in column-wise fashion)
     # now well numbers correspond i.e t_out[12] = A12, t_out[13] = B01

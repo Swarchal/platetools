@@ -11,7 +11,11 @@
 #' @param threshold Standard deviations from the plate average to indicate a hit.
 #'      default is set to +/- 2 SD.
 #' @param palette RColorBrewer palette
-#' @param ... additional arguments to be passed to \code{medpolish}
+#' @param eps real number greater than 0. A tolerance for divergence
+#' @param maxiter int, the maximum number of iterations
+#' @param trace.iter Boolean, should progress in convergence be reported?
+#' @param na.rm Boolean, should missing values be removed?
+#' @param ... additional parameters to plot wrappers
 #'
 #' @return ggplot plot
 #'
@@ -30,7 +34,8 @@
 #'    threshold = 3)
 
 bhit_map <- function(data, well, plate = 96, threshold = 2,
-                     palette = "Spectral", ...){
+                     palette = "Spectral", eps = 0.01, maxiter = 10,
+                     trace.iter = FALSE, na.rm = TRUE, ...){
 
     # need to transform columns of wellID and data into
     # matrix corresponding to well positions:
@@ -66,10 +71,8 @@ bhit_map <- function(data, well, plate = 96, threshold = 2,
     }
 
     # median polish of the data
-    data_pol <- medpolish(mat_plate_map,
-                          na.rm = TRUE,
-                          trace.iter=FALSE,
-                          ...)
+    data_pol <- medpolish(mat_plate_map, eps = eps, maxiter = maxiter,
+                          trace.iter = trace.iter, na.rm = na.rm)
 
     # transpose of residual matrix (as counts in column-wise fashion)
     # now well numbers correspond i.e t_out[12] = A12, t_out[13] = B01
@@ -113,20 +116,23 @@ bhit_map <- function(data, well, plate = 96, threshold = 2,
 
     if (plate == 96){
         # produce a 96-well plate map layout in ggplot
-        plt <- plt96(platemap) +
+        plt <- plt96(platemap, ...) +
             scale_fill_manual("hit", values = my_colours) +
             theme_bw()
+
     } else if (plate == 384) {
         # produce a 384-well plate map layout in ggplot
-        plt <- plt384(platemap) +
+        plt <- plt384(platemap, ...) +
             scale_fill_manual("hit", values = my_colours) +
             theme_bw()
+
     } else if (plate == 1536L) {
-        plt <- plt1536(platemap) +
+        plt <- plt1536(platemap, ...) +
            scale_fill_manual("hit", values = my_colours) +
            theme_bw()
+
     } else {
-        stop("Not a valid plate format. Either 96 or 384.", call. = FALSE)
+        stop("Not a valid plate format. Either 96, 384 or 1536.", call. = FALSE)
     }
     return(plt)
 }

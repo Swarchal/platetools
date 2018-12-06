@@ -9,7 +9,11 @@
 #' @param plate integer, 96, 384 or 1536
 #' @param normalise Boolean, if TRUE then the residual values will be divded by
 #'                 the plate median absolute deviation as per Malo et al.
-#' @param ... additional arguments to be passed to \code{medpolish}
+#' @param eps real number greater than 0. A tolerance for divergence
+#' @param maxiter int, the maximum number of iterations
+#' @param trace.iter Boolean, should progress in convergence be reported?
+#' @param na.rm Boolean, should missing values be removed?
+#' @param ... additional parameters to plot wrappers
 #' @return ggplot plot
 #'
 #' @import ggplot2
@@ -32,10 +36,9 @@
 #'      plate = 384)
 
 
- b_map <- function(data, well,
-                  normalise = FALSE,
-                  plate = 96,
-                  ...) {
+ b_map <- function(data, well, normalise = FALSE, plate = 96, eps = 0.01,
+                   maxiter = 10, trace.iter = FALSE, na.rm = TRUE, ...) {
+
     stopifnot(is.vector(data))
 
     # need to transform columns of wellID and data into
@@ -46,7 +49,8 @@
 
     check_plate_input(well, plate)
 
-    df <- med_smooth(platemap, plate, ...)
+    df <- med_smooth(platemap = platemap, plate = plate, eps = eps,
+                     maxiter = maxiter, trace.iter = trace.iter, na.rm = na.rm)
 
     if (normalise) {
         # divide by the plate median absolute deivation
@@ -58,15 +62,18 @@
 
     # produce a plate map in ggplot (96-well format)
     if (plate == 96L){
-        plt <- plt96(platemap) +
+        plt <- plt96(platemap, ...) +
             theme_bw()
+
     } else if (plate == 384L) {
         # produce a plate map in ggplot (384-well format)
-        plt <- plt384(platemap) +
+        plt <- plt384(platemap, ...) +
             theme_bw()
+
     } else if (plate == 1536L) {
-    plt <- plt1536(platemap) +
-        theme_bw()
+        plt <- plt1536(platemap, ...) +
+            theme_bw()
+
     } else {
         stop("Invalid argument for `plate`. \nOptions: 96, 384 or 1536.",
              call. = FALSE)

@@ -4,7 +4,8 @@
 \alias{bhit_map}
 \title{Platemap to identify 'hits' following a B-score normalisation}
 \usage{
-bhit_map(data, well, plate = 96, threshold = 2, palette = "Spectral", ...)
+bhit_map(data, well, plate = 96, threshold = 2, palette = "Spectral",
+  eps = 0.01, maxiter = 10, trace.iter = FALSE, na.rm = TRUE, ...)
 }
 \arguments{
 \item{data}{Vector of numerical values}
@@ -18,7 +19,15 @@ default is set to +/- 2 SD.}
 
 \item{palette}{RColorBrewer palette}
 
-\item{...}{additional arguments to be passed to \code{medpolish}}
+\item{eps}{real number greater than 0. A tolerance for divergence}
+
+\item{maxiter}{int, the maximum number of iterations}
+
+\item{trace.iter}{Boolean, should progress in convergence be reported?}
+
+\item{na.rm}{Boolean, should missing values be removed?}
+
+\item{...}{additional parameters to plot wrappers}
 }
 \value{
 ggplot plot

@@ -4,7 +4,8 @@
 \alias{b_map}
 \title{Plots a heatmap of b-score normalised values in a plate layout}
 \usage{
-b_map(data, well, normalise = FALSE, plate = 96, ...)
+b_map(data, well, normalise = FALSE, plate = 96, eps = 0.01,
+  maxiter = 10, trace.iter = FALSE, na.rm = TRUE, ...)
 }
 \arguments{
 \item{data}{Numerical values in the form of a vector to be normalised}
@@ -16,7 +17,15 @@ the plate median absolute deviation as per Malo et al.}
 
 \item{plate}{integer, 96, 384 or 1536}
 
-\item{...}{additional arguments to be passed to \code{medpolish}}
+\item{eps}{real number greater than 0. A tolerance for divergence}
+
+\item{maxiter}{int, the maximum number of iterations}
+
+\item{trace.iter}{Boolean, should progress in convergence be reported?}
+
+\item{na.rm}{Boolean, should missing values be removed?}
+
+\item{...}{additional parameters to plot wrappers}
 }
 \value{
 ggplot plot
