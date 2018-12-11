@@ -38,7 +38,7 @@ raw_map <- function(data, well, plate = 96, ...) {
     plt <- plt1536(platemap, ...) + theme_bw()
 
     } else{
-    stop("Invalid argument for 'plate'. \nOption: 96, 384 or 1546",
+    stop("Invalid argument for 'plate'. \nOption: 96, 384 or 1536",
         call. = FALSE)
     }
 
