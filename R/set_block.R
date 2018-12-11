@@ -54,14 +54,14 @@ set_block <- function(plate, block, what, value) {
 
     # First, define a function that works on a single block.
     set_block_ <- function(plate, block) {
-        plateRows  <- gsub("[[:digit:]]+", "", plate$well) %>% factor
-        plateCols  <- gsub("[[:alpha:]]+", "", plate$well) %>% as.numeric %>% factor
+        plateRows  <- factor(gsub("[[:digit:]]+", "", plate$well))
+        plateCols  <- factor(as.numeric(gsub("[[:alpha:]]+", "", plate$well)))
         startWell  <- sub("~.*", "", block)
         endWell    <- sub(".*~", "", block)
         startRow   <- substr(startWell, 1,1)
         endRow     <- substr(endWell,   1,1)
-        startCol   <- substr(startWell, 2,3) %>% as.numeric
-        endCol     <- substr(endWell,   2,3) %>% as.numeric
+        startCol   <- as.numeric(substr(startWell, 2,3))
+        endCol     <- as.numeric(substr(endWell,   2,3))
         targetRows <- LETTERS[seq(which(LETTERS == startRow), which(LETTERS == endRow))]
         targetCols <- seq(startCol, endCol)
         plate[plateRows %in% targetRows & plateCols %in% targetCols, what] <- value
