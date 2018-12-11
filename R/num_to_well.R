@@ -20,6 +20,10 @@
 num_to_well <- function(x, plate = 96){
 
     stopifnot(is.numeric(x))
+    if (any(x > plate)) {
+        stop("x cannot be greater than the number of wells in the plate",
+             call. = FALSE)
+    }
 
     if (plate == 96L){
         rows <- LETTERS[1:8]

@@ -27,8 +27,7 @@ fill_plate <- function(df, well, plate = 96) {
     # TODO: if passed the column name that's not a string,
     # should be able to subset anyway
     if (!is.character(well)) {
-        stop("'well' should be a string of the column name",
-             call. = FALSE)
+        stop("'well' should be a string of the column name", call. = FALSE)
     }
 
     # check inputs
@@ -51,7 +50,7 @@ fill_plate <- function(df, well, plate = 96) {
     well_col <- df[, well]
 
     # all wells in a complete plate
-    complete_plate <- num_to_well(1:plate)
+    complete_plate <- num_to_well(1:plate, plate=plate)
 
     # wells in complete plate that are not in 'well'
     missing_indices <- which(complete_plate %!in% well_col)
@@ -59,6 +58,7 @@ fill_plate <- function(df, well, plate = 96) {
 
     missing_df <- data.frame(missing_wells) # dataframe of just missing wells
     names(missing_df) <- eval(substitute(well)) # name column after original well column
+    # TODO: remove this plyr function, replace with base R
     filled_df <- rbind.fill(df, missing_df) # rbind, fill rows with NAs
     return(filled_df)
 }
