@@ -13,7 +13,6 @@ Encoding: UTF-8
 LazyData: true
 Imports:
     dplyr,
-    plyr,
     RColorBrewer,
     ggplot2 (>= 2.2.0)
 Suggests:

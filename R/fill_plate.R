@@ -7,8 +7,6 @@
 #' @param plate Number of wells in complete plate (96, 384 or 1536)
 #' @param well Column containing well identifiers i.e "A01"
 #'
-#' @importFrom plyr rbind.fill
-#'
 #' @return dataframe
 #'
 #' @export
@@ -21,8 +19,6 @@
 
 fill_plate <- function(df, well, plate = 96) {
 
-    # useful 'not in' function
-    '%!in%' <- function(x,y)!('%in%'(x,y))
 
     # TODO: if passed the column name that's not a string,
     # should be able to subset anyway
@@ -58,7 +54,28 @@ fill_plate <- function(df, well, plate = 96) {
 
     missing_df <- data.frame(missing_wells) # dataframe of just missing wells
     names(missing_df) <- eval(substitute(well)) # name column after original well column
-    # TODO: remove this plyr function, replace with base R
-    filled_df <- rbind.fill(df, missing_df) # rbind, fill rows with NAs
+    filled_df <- rbind_fill(df, missing_df) # rbind, fill rows with NAs
     return(filled_df)
+}
+
+
+# useful 'not in' function
+'%!in%' <- function(x,y)!('%in%'(x,y))
+
+
+rbind_fill <- function(x, y) {
+    # fill in missing column in y with NA values
+    if (nrow(y) == 0) {
+        return(x)
+    }
+    x_names <- colnames(x)
+    y_names <- colnames(y)
+    for (col_name in x_names) {
+        # if column not found in y, then add it as all NAs
+        if (col_name %!in% y_names) {
+            y[, col_name] <- NA
+        }
+    }
+    # now the two dataframes should be able to be rbind together
+    rbind(x, y)
 }
