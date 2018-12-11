@@ -80,7 +80,7 @@ plate_map_grid_scale <- function(data, well, plate_id, each){
     if (each == FALSE) {
         df$values <- scale(df$values)
     } else if (each == TRUE) {
-        split_df <- split(platemap, platemap$plate_label)
+        split_df <- split(df, df$plate_label)
         df <- do.call(
             rbind,
             Map(function(x) {scale(x$values) -> x$values; x}, split_df)
