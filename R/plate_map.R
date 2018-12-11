@@ -5,7 +5,6 @@
 #' @param data numeric data to be used as colour scale
 #' @param well alpha-numeric well IDs, e.g 'A01'
 #' @return dataframe
-#' @import dplyr
 #' @export
 
 plate_map <- function(data, well){
@@ -74,20 +73,18 @@ plate_map_grid <- function(data, well, plate_id){
 #' @param each boolean, if true scales each plate individually, if false will
 #'     scale the pooled values of \code{data}
 #' @return dataframe
-#' @import dplyr
 #' @export
 
 plate_map_grid_scale <- function(data, well, plate_id, each){
     df <- plate_map_grid(data, well, plate_id)
-
     if (each == FALSE) {
         df$values <- scale(df$values)
     } else if (each == TRUE) {
-        # TODO: un-dplyr this
-        df <- df %>% group_by_("plate_label") %>%
-            mutate_(values = "scale(values)[,]") %>% #STOP SCALE RETURNING STUPID ATTRIBUTES!
-            ungroup() %>%
-            as.data.frame()
+        split_df <- split(platemap, platemap$plate_label)
+        df <- do.call(
+            rbind,
+            Map(function(x) {scale(x$values) -> x$values; x}, split_df)
+        )
     }
     return(df)
 }
@@ -101,7 +98,6 @@ plate_map_grid_scale <- function(data, well, plate_id, each){
 #'
 #' @param data vector or dataframe of numeric data
 #' @param well vector of alphanumeric well IDs e.g 'A01'
-#' @import dplyr
 
 plate_map_multiple <- function(data, well){
     platemap <- as.data.frame(well)

@@ -7,9 +7,11 @@
   when using two-way median polish and b_score functions.
 - All plots now have additional arguments to change the `size` and `shape` of
   the wells using the same arguments as `geom_point`.
-- b-score functions now have `normalise` argument to ficide residuals by the
+- b-score functions now have `normalise` argument to divide residuals by the
   plate median-absolute-deviation (MAD) as per the original paper.
 - Deprecation warning as `each` argument changed to `scale_each`.
+- Remove plyr as a dependency
+- Remove dplyr as a dependency
 
 
 ## 2018-06-25

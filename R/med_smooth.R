@@ -66,7 +66,8 @@ med_smooth <- function(platemap, plate, eps = 0.01, maxiter = 10,
 
     df <- as.data.frame(
         cbind("well" = df$well,
-              "residual" = df$residual))
+              "residual" = df$residual)
+    )
     # change residuals from factor to numeric
     df$residual <- as.numeric(as.character(df$residual))
 

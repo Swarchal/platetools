@@ -26,10 +26,9 @@
 well_to_num <- function(wells,
                         style = "normal",
                         plate = 96){
-    
+
     if(plate == 96){
         if(style == "snake"){
-            
             # dataframe containing all wells in snaking order
             well_list_96_snake <- structure(list(
                 well = structure(c(
@@ -56,12 +55,9 @@ well_to_num <- function(wells,
                         "H08", "H09", "H10", "H11", "H12"),
                     class = "factor")), .Names = "well",
                 class = "data.frame", row.names = c(NA, -96L))
-            
             return(which(well_list_96_snake$well %in% wells))
         }
-        
         if(style == "normal"){
-            
             # dataframe containing all wells in order (normal)
             well_list_96 <- structure(list(
                 well = structure(1:96,.Label = c(
@@ -78,14 +74,12 @@ well_to_num <- function(wells,
                     "G12", "H01", "H02", "H03", "H04", "H05", "H06", "H07", "H08", 
                     "H09", "H10", "H11", "H12"),class = "factor")),
                 .Names = "well", class = "data.frame", row.names = c(NA, -96L))
-            
             return(which(well_list_96$well %in% wells))
         } else {stop("Not a valid style. Has to be either 'normal', or 'snake'",
                      call. = FALSE)}
     }
     if(plate == 384){
         if(style == "snake"){
-            
             well_list_384_snake <-
                 structure(list(well = structure(c(
                     1L, 2L, 3L, 4L, 5L, 6L, 7L, 
@@ -164,13 +158,11 @@ well_to_num <- function(wells,
                               "O14", "O15", "O16", "O17", "O18", "O19", "O20", "O21", "O22", 
                               "O23", "O24", "P01", "P02", "P03", "P04", "P05", "P06", "P07", 
                               "P08", "P09", "P10", "P11", "P12", "P13", "P14", "P15", "P16", 
-                              "P17", "P18", "P19", "P20", "P21", "P22", "P23", "P24"), class = "factor")), .Names = "well", class = "data.frame", row.names = c(NA, 
-                                                                                                                                                                -384L))
-            
+                              "P17", "P18", "P19", "P20", "P21", "P22", "P23", "P24"), class = "factor")),
+                          .Names = "well", class = "data.frame", row.names = c(NA, -384L)) 
             return(which(well_list_384_snake$well %in% wells))
         }
         if (style == "normal"){
-            
             well_list_384 <- structure(list(
                 well = structure(1:384,.Label = c(
                     "A01", "A02", 
@@ -216,15 +208,9 @@ well_to_num <- function(wells,
                     "O18", "O19", "O20", "O21", "O22", "O23", "O24", "P01", "P02", 
                     "P03", "P04", "P05", "P06", "P07", "P08", "P09", "P10", "P11", 
                     "P12", "P13", "P14", "P15", "P16", "P17", "P18", "P19", "P20", 
-                    "P21", "P22", "P23", "P24"),
-                    class = "factor")),
-                .Names = "well",
-                class = "data.frame",
-                row.names = c(NA, -384L))
-            
+                    "P21", "P22", "P23", "P24"), class = "factor")),
+                    .Names = "well", class = "data.frame", row.names = c(NA, -384L))
             return(which(well_list_384$well %in% wells))
-        } else {stop("Not a valid style. Has to be either 'normal', or 'snake'",
-                     call. = FALSE)}
-    } else {stop("Invalid plate format. Argument has to be 96 or 384",
-                 call. = FALSE)}
+        } else {stop("Not a valid style. Has to be either 'normal', or 'snake'", call. = FALSE)}
+    } else {stop("Invalid plate format. Argument has to be 96 or 384", call. = FALSE)}
 }

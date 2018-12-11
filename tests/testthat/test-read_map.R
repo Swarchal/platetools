@@ -5,8 +5,7 @@ data(readmap_data)
 dat <- readmap_data
 
 # example dataframe
-df <- data.frame(well = num_to_well(1:96),
-		 val = rnorm(96))
+df <- data.frame(well = num_to_well(1:96), val = rnorm(96))
 
 out_verbose <- read_map(df, map = dat)
 out <- read_map(df, map = dat, verbose = FALSE)

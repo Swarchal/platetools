@@ -12,7 +12,6 @@ BugReports: https://github.com/swarchal/platetools/issues
 Encoding: UTF-8
 LazyData: true
 Imports:
-    dplyr,
     RColorBrewer,
     ggplot2 (>= 2.2.0)
 Suggests:
