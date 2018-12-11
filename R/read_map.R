@@ -9,7 +9,6 @@
 #' @param verbose Boolean, if TRUE will add row and column numbers to dataframe
 #' @param new_col_name What to call the added metadata
 #'
-#' @import dplyr
 #' @importFrom utils read.csv
 #'
 #' @export
