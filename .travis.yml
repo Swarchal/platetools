@@ -1,13 +1,23 @@
+os:
+    - linux
+    - osx
+
 language: r
+
 r:
     - oldrel
     - release
     - devel
+
 cache: packages
+
 sudo: required
+
 r_packages:
     - devtools
+
 r_github_packages:
     - jimhester/covr
+
 after_success:
-- Rscript -e 'library(covr);codecov()'
+    - Rscript -e 'library(covr);codecov()'
