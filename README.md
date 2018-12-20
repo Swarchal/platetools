@@ -19,7 +19,7 @@ devtools::install_github("swarchal/platetools")
 
 ### Use
 
-<img src="/graphics/example_platemap.png" height="250" align="right"/>
+<img src="/graphics/example_platemap.png" height="350" align="right"/>
 
 ```r
 # example dataframe
