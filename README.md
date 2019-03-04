@@ -60,4 +60,4 @@ e.g:
 
 
 ##### Maintainer
-Scott Warchal - <s.warchal@sms.ed.ac.uk>
+Scott Warchal - <scott.warchal (at) servier.com>
