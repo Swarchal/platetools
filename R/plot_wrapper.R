@@ -93,3 +93,18 @@ parse_shape <- function(shape) {
         }
     } else {stop("invalid parameter for shape")}
 }
+
+
+#' change legend title
+#'
+#' Change the legend title. This can be done in ggplot but there
+#' are a million incomprehensible ways to do it.
+#'
+#' @param title, string new title
+#' @return ggplot object
+#' @import ggplot2
+#' @export
+
+legend_title <- function(title) {
+    return(labs(fill = title))
+}

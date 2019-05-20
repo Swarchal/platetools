@@ -4,7 +4,8 @@
 \alias{hit_map}
 \title{Platemap to identify 'hits' in a screen}
 \usage{
-hit_map(data, well, plate = 96, threshold = 2, palette = "Spectral", ...)
+hit_map(data, well, plate = 96, threshold = 2, palette = "Spectral",
+  ...)
 }
 \arguments{
 \item{data}{Vector of numerical values to score}

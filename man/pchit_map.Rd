@@ -4,8 +4,8 @@
 \alias{pchit_map}
 \title{Plots a heatmap identifying hits from the first principal component}
 \usage{
-pchit_map(data, well, plate = 96, threshold = 2, palette = "Spectral",
-  ...)
+pchit_map(data, well, plate = 96, threshold = 2,
+  palette = "Spectral", ...)
 }
 \arguments{
 \item{data}{Numerical values, either a dataframe or a matrix}

@@ -4,8 +4,8 @@
 \alias{med_smooth}
 \title{2-way median smooth}
 \usage{
-med_smooth(platemap, plate, eps = 0.01, maxiter = 10, trace.iter = FALSE,
-  na.rm = TRUE)
+med_smooth(platemap, plate, eps = 0.01, maxiter = 10,
+  trace.iter = FALSE, na.rm = TRUE)
 }
 \arguments{
 \item{platemap}{dataframe produced by \code{plate_map}}
