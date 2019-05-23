@@ -13,6 +13,12 @@ CRAN:
 ```r
 install.packages("platetools")
 ```
+
+conda:
+```bash
+conda install -c conda-forge r-platetools
+```
+
 GitHub (dev version):
 ```r
 devtools::install_github("swarchal/platetools")
