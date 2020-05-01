@@ -20,7 +20,7 @@ plt96 <- function(platemap, size = 10, shape = 21){
                    aes_string(x = "Var1", y = "Var2"),
                    color = "grey90", fill = "white", shape = shape, size = size-4, alpha = 0.1) +
         geom_point(aes_string(fill = "values"), colour = "gray20", shape = shape, size = size) +
-        coord_fixed(ratio = (13 / 12) / (9 / 8), xlim = c(0.5, 12.5), ylim = c(8.5, 0.5)) +
+        coord_fixed(ratio = (13 / 12) / (9 / 8), xlim = c(0.5, 12.5), ylim = ylim) +
         scale_y_reverse(breaks = seq(1, 8), labels = LETTERS[1:8]) +
         scale_x_continuous(position = "top", breaks = seq(1, 12)) +
         xlab("") +
