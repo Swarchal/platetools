@@ -39,12 +39,6 @@ missing_wells <- function(df, well, plate = 96){
         stop("'plate' needs to be either 96 or 384", call. = FALSE)
     }
 
-    # check that well is a column in df
-    if (well %in% colnames(df) == FALSE){
-        stop(paste(well, "is not a column in", substitute(df)),
-             call. = FALSE)
-    }
-
     well_col <- df[, well]
 
     # all wells in a complete plate
