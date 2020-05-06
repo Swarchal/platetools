@@ -4,8 +4,16 @@
 \alias{z_grid}
 \title{Plots multiple platemaps with heatmap of scaled values}
 \usage{
-z_grid(data, well, plate_id, ncols = 2, plate = 96, each = FALSE,
-  scale_each = FALSE, ...)
+z_grid(
+  data,
+  well,
+  plate_id,
+  ncols = 2,
+  plate = 96,
+  each = FALSE,
+  scale_each = FALSE,
+  ...
+)
 }
 \arguments{
 \item{data}{Numerical values to be plotted}

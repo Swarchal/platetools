@@ -4,8 +4,18 @@
 \alias{hit_grid}
 \title{Plots multiple platemaps with and identifies hits}
 \usage{
-hit_grid(data, well, plate_id, threshold = 2, ncols = 2, plate = 96,
-  each = FALSE, scale_each = FALSE, palette = "Spectral", ...)
+hit_grid(
+  data,
+  well,
+  plate_id,
+  threshold = 2,
+  ncols = 2,
+  plate = 96,
+  each = FALSE,
+  scale_each = FALSE,
+  palette = "Spectral",
+  ...
+)
 }
 \arguments{
 \item{data}{Numerical values to be scaled and plotted}

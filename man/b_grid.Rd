@@ -4,8 +4,17 @@
 \alias{b_grid}
 \title{Plots multiple b-scored normalised platemaps}
 \usage{
-b_grid(data, well, plate_id, plate = 96, eps = 0.01, maxiter = 10,
-  trace.iter = FALSE, na.rm = FALSE, ...)
+b_grid(
+  data,
+  well,
+  plate_id,
+  plate = 96,
+  eps = 0.01,
+  maxiter = 10,
+  trace.iter = FALSE,
+  na.rm = FALSE,
+  ...
+)
 }
 \arguments{
 \item{data}{Numerical values to be plotted}

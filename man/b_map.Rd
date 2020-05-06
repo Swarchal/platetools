@@ -4,8 +4,17 @@
 \alias{b_map}
 \title{Plots a heatmap of b-score normalised values in a plate layout}
 \usage{
-b_map(data, well, normalise = FALSE, plate = 96, eps = 0.01,
-  maxiter = 10, trace.iter = FALSE, na.rm = TRUE, ...)
+b_map(
+  data,
+  well,
+  normalise = FALSE,
+  plate = 96,
+  eps = 0.01,
+  maxiter = 10,
+  trace.iter = FALSE,
+  na.rm = TRUE,
+  ...
+)
 }
 \arguments{
 \item{data}{Numerical values in the form of a vector to be normalised}

@@ -4,7 +4,9 @@
 \name{readmap_data}
 \alias{readmap_data}
 \title{example data in a plate map form}
-\format{96 integers structured in a the form of a 96-well plate}
+\format{
+96 integers structured in a the form of a 96-well plate
+}
 \source{
 none
 }
