@@ -21,7 +21,7 @@ conda install -c conda-forge r-platetools
 
 GitHub (dev version):
 ```r
-devtools::install_github("swarchal/platetools")
+remotes::install_github("swarchal/platetools")
 ```
 
 ### Use
