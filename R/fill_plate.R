@@ -37,12 +37,6 @@ fill_plate <- function(df, well, plate = 96) {
         stop("'plate' needs to be either 96, 384 or 1536", call. = FALSE)
     }
 
-    # check that well is a column in df
-    if (well %in% colnames(df) == FALSE) {
-        stop(paste(well, "is not a column in", substitute(df)),
-             call. = FALSE)
-    }
-
     well_col <- df[, well]
 
     # all wells in a complete plate

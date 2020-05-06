@@ -129,5 +129,5 @@ legend_title <- function(title) {
 
 is_old_ggplot <- function() {
     # there's no sensible way to do this in R?!
-    return(packageVersion("ggplot2")<"3.3.0")
+    return(utils::packageVersion("ggplot2")<"3.3.0")
 }

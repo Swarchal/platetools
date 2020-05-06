@@ -1,7 +1,7 @@
 Package: platetools
 Title: Tools and Plots for Multi-Well Plates
-Version: 0.1.2
-Authors@R: person("Scott", "Warchal", email = "s.warchal@sms.ed.ac.uk", role = c("aut", "cre"))
+Version: 0.1.3
+Authors@R: person("Scott", "Warchal", email = "scott.warchal@gmail.com", role = c("aut", "cre"))
 Description: Collection of functions for working with multi-well microtitre
     plates, mainly 96, 384 and 1536 well plates.
 Depends:

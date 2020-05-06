@@ -1,3 +1,10 @@
+## 2020-05-04
+
+**version 0.1.3**
+- Reverse `coord_fixed(ylim())` values in ggplot2 >= v3.3.0
+- Improve warning messages for checking plate input (@aaronmck)
+
+
 ## 2018-12-06
 
 **Version 0.1.2**
