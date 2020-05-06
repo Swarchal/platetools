@@ -26,12 +26,6 @@ Updates a table representing a multiwell plate, by setting a given value
 for all wells in a block or a list of blocks defined by the well coordinates
 of their upper-left and bottom-right corners.
 }
-\details{
-This function is tested with a table in \code{\link{data.frame}} format,
-but it should also work with the \code{\link[S4Vectors]{DataFrame}},
-\code{\link[data.table]{data.table}} and
-\code{\link[tibble]{tibble}} formats.
-}
 \examples{
 p <- data.frame(well = num_to_well(1:96))
 head(p)

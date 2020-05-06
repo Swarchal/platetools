@@ -4,11 +4,6 @@
 #' for all wells in a block or a list of blocks defined by the well coordinates
 #' of their upper-left and bottom-right corners.
 #'
-#' This function is tested with a table in \code{\link{data.frame}} format,
-#' but it should also work with the \code{\link[S4Vectors]{DataFrame}},
-#' \code{\link[data.table]{data.table}} and
-#' \code{\link[tibble]{tibble}} formats.
-#'
 #' @param plate A table representing a multiwell plate, with one column
 #'        named \dQuote{well} representing the well identifiers.
 #' @param block Coordinates of a rectangular block (such as \dQuote{A01~B02}),
