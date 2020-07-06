@@ -67,4 +67,4 @@ e.g:
 
 
 ##### Maintainer
-Scott Warchal - <scott.warchal (at) servier.com>
+Scott Warchal - <scott.warchal (at) crick.ac.uk>
