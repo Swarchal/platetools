@@ -24,7 +24,7 @@ b_map(
 \item{normalise}{Boolean, if TRUE then the residual values will be divded by
 the plate median absolute deviation as per Malo et al.}
 
-\item{plate}{integer, 96, 384 or 1536}
+\item{plate}{integer, 6, 12, 24, 48, 96, 384 or 1536}
 
 \item{eps}{real number greater than 0. A tolerance for divergence}
 
@@ -42,7 +42,7 @@ ggplot plot
 \description{
 Transforms numerical values using the b-score normalisation process to account
 for row and column effects. Uses well labels to plot the normalised values in
-the form of a microtitre plate. Works for 96, 384 or 1536 well plates
+the form of a microtitre plate. Works for 6, 12, 24, 48, 96, 384 or 1536 well plates
 }
 \examples{
 df <- data.frame(well = num_to_well(1:96),

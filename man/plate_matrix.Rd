@@ -11,7 +11,7 @@ plate_matrix(data, well, plate = 96)
 
 \item{well}{vector of alphanumeric well IDs. e.g ("A01")}
 
-\item{plate}{number of wells in plate (96 or 384)}
+\item{plate}{number of wells in plate (6, 12, 24, 48, 96 or 384, 1536)}
 }
 \value{
 matrix
