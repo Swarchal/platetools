@@ -24,8 +24,19 @@ num_to_well <- function(x, plate = 96){
         stop("x cannot be greater than the number of wells in the plate",
              call. = FALSE)
     }
-
-    if (plate == 96L){
+    if (plate == 6) {
+        rows <- LETTERS[1:2]
+        columns <- 1:3
+    } else if (plate == 12L) {
+        rows <- LETTERS[1:3]
+        columns <- 1:4
+    } else if (plate == 24L) {
+        rows <- LETTERS[1:4]
+        columns <- 1:6
+    } else if (plate == 48L) {
+        rows <- LETTERS[1:6]
+        columns <- 1:8
+    } else if (plate == 96L){
         rows <- LETTERS[1:8]
         columns <- 1:12
     } else if (plate == 384L){

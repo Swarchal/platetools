@@ -9,6 +9,126 @@
 #' @import ggplot2
 #' @export
 
+plt6 <- function(platemap, size = 50, shape = 21){
+    shape <- parse_shape(shape)
+    ylim <- c(2.5, 0.5)
+    if (is_old_ggplot()) {
+        ylim <- rev(ylim)
+    }
+    ggplot(data = platemap, aes_string(x = "Column", y = "Row")) +
+        geom_point(data = expand.grid(seq(1, 3), seq(1, 2)),
+                   aes_string(x = "Var1", y = "Var2"),
+                   color = "grey90", fill = "white", shape = shape, size = size-4, alpha = 0.1) +
+        geom_point(aes_string(fill = "values"), colour = "gray20", shape = shape, size = size) +
+        coord_fixed(ratio = (4.75 / 3) / (3 / 2), xlim = c(0.5, 3.5), ylim = ylim) +
+        scale_y_reverse(breaks = seq(1, 2), labels = LETTERS[1:2]) +
+        scale_x_continuous(position = "top", breaks = seq(1, 3)) +
+        xlab("") +
+        ylab("")
+}
+
+
+#' ggplot plate object
+#'
+#' internal function
+#'
+#' @param platemap platemap dataframe produced by \code{plate_map}
+#' @param size int, size parameter for ggplot2::geom_point
+#' @param shape int, shape parameter for ggplot2::geom_point
+#' @return ggplot object
+#' @import ggplot2
+#' @export
+
+plt12 <- function(platemap, size = 38, shape = 21){
+    shape <- parse_shape(shape)
+    ylim <- c(3.5, 0.5)
+    if (is_old_ggplot()) {
+        ylim <- rev(ylim)
+    }
+    ggplot(data = platemap, aes_string(x = "Column", y = "Row")) +
+        geom_point(data = expand.grid(seq(1, 4), seq(1, 3)),
+                   aes_string(x = "Var1", y = "Var2"),
+                   color = "grey90", fill = "white", shape = shape, size = size-4, alpha = 0.1) +
+        geom_point(aes_string(fill = "values"), colour = "gray20", shape = shape, size = size) +
+        coord_fixed(ratio = (5.5 / 4) / (4 / 3), xlim = c(0.5, 4.5), ylim = ylim) +
+        scale_y_reverse(breaks = seq(1, 3), labels = LETTERS[1:3]) +
+        scale_x_continuous(position = "top", breaks = seq(1, 4)) +
+        xlab("") +
+        ylab("")
+}
+
+
+#' ggplot plate object
+#'
+#' internal function
+#'
+#' @param platemap platemap dataframe produced by \code{plate_map}
+#' @param size int, size parameter for ggplot2::geom_point
+#' @param shape int, shape parameter for ggplot2::geom_point
+#' @return ggplot object
+#' @import ggplot2
+#' @export
+
+plt24 <- function(platemap, size = 26, shape = 21){
+    shape <- parse_shape(shape)
+    ylim <- c(4.5, 0.5)
+    if (is_old_ggplot()) {
+        ylim <- rev(ylim)
+    }
+    ggplot(data = platemap, aes_string(x = "Column", y = "Row")) +
+        geom_point(data = expand.grid(seq(1, 6), seq(1, 4)),
+                   aes_string(x = "Var1", y = "Var2"),
+                   color = "grey90", fill = "white", shape = shape, size = size-4, alpha = 0.1) +
+        geom_point(aes_string(fill = "values"), colour = "gray20", shape = shape, size = size) +
+        coord_fixed(ratio = (8 / 6) / (5 / 4), xlim = c(0.5, 6.5), ylim = ylim) +
+        scale_y_reverse(breaks = seq(1, 4), labels = LETTERS[1:4]) +
+        scale_x_continuous(position = "top", breaks = seq(1, 6)) +
+        xlab("") +
+        ylab("")
+}
+
+
+#' ggplot plate object
+#'
+#' internal function
+#'
+#' @param platemap platemap dataframe produced by \code{plate_map}
+#' @param size int, size parameter for ggplot2::geom_point
+#' @param shape int, shape parameter for ggplot2::geom_point
+#' @return ggplot object
+#' @import ggplot2
+#' @export
+
+plt48 <- function(platemap, size = 18, shape = 21){
+    shape <- parse_shape(shape)
+    ylim <- c(6.5, 0.5)
+    if (is_old_ggplot()) {
+        ylim <- rev(ylim)
+    }
+    ggplot(data = platemap, aes_string(x = "Column", y = "Row")) +
+        geom_point(data = expand.grid(seq(1, 8), seq(1, 6)),
+                   aes_string(x = "Var1", y = "Var2"),
+                   color = "grey90", fill = "white", shape = shape, size = size-4, alpha = 0.1) +
+        geom_point(aes_string(fill = "values"), colour = "gray20", shape = shape, size = size) +
+        coord_fixed(ratio = (9 / 8) / (7 / 6), xlim = c(0.5, 8.5), ylim = ylim) +
+        scale_y_reverse(breaks = seq(1, 6), labels = LETTERS[1:6]) +
+        scale_x_continuous(position = "top", breaks = seq(1, 8)) +
+        xlab("") +
+        ylab("")
+}
+
+
+#' ggplot plate object
+#'
+#' internal function
+#'
+#' @param platemap platemap dataframe produced by \code{plate_map}
+#' @param size int, size parameter for ggplot2::geom_point
+#' @param shape int, shape parameter for ggplot2::geom_point
+#' @return ggplot object
+#' @import ggplot2
+#' @export
+
 plt96 <- function(platemap, size = 10, shape = 21){
     shape <- parse_shape(shape)
     ylim <- c(8.5, 0.5)
