@@ -2,11 +2,11 @@
 #'
 #' Transforms numerical values using the b-score normalisation process to account
 #' for row and column effects. Uses well labels to plot the normalised values in
-#' the form of a microtitre plate. Works for 96, 384 or 1536 well plates
+#' the form of a microtitre plate. Works for 6, 12, 24, 48, 96, 384 or 1536 well plates
 #'
 #' @param data Numerical values in the form of a vector to be normalised
 #' @param well Vector of well identifiers, e.g "A01"
-#' @param plate integer, 96, 384 or 1536
+#' @param plate integer, 6, 12, 24, 48, 96, 384 or 1536
 #' @param normalise Boolean, if TRUE then the residual values will be divded by
 #'                 the plate median absolute deviation as per Malo et al.
 #' @param eps real number greater than 0. A tolerance for divergence
@@ -61,21 +61,22 @@
     platemap <- plate_map(df$values, df$well)
 
     # produce a plate map in ggplot (96-well format)
-    if (plate == 96L){
-        plt <- plt96(platemap, ...) +
-            theme_bw()
-
+    if (plate == 6L) {
+        plt <- plt6(platemap, ...) + theme_bw()
+    } else if (plate == 12L) {
+        plt <- plt12(platemap, ...) + theme_bw()
+    } else if (plate == 24L) {
+        plt <- plt24(platemap, ...) + theme_bw()
+    } else if (plate == 48L) {
+        plt <- plt48(platemap, ...) + theme_bw()
+    } else if (plate == 96L){
+        plt <- plt96(platemap, ...) + theme_bw()
     } else if (plate == 384L) {
-        # produce a plate map in ggplot (384-well format)
-        plt <- plt384(platemap, ...) +
-            theme_bw()
-
+        plt <- plt384(platemap, ...) + theme_bw()
     } else if (plate == 1536L) {
-        plt <- plt1536(platemap, ...) +
-            theme_bw()
-
+        plt <- plt1536(platemap, ...) + theme_bw()
     } else {
-        stop("Invalid argument for `plate`. \nOptions: 96, 384 or 1536.",
+        stop("Invalid argument for `plate`. \nOptions: 6, 12, 24, 48, 96, 384 or 1536.",
              call. = FALSE)
     }
 

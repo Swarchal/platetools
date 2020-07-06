@@ -5,7 +5,7 @@
 #'
 #' @param data vector of data to be placed in matrix
 #' @param well vector of alphanumeric well IDs. e.g ("A01")
-#' @param plate number of wells in plate (96 or 384)
+#' @param plate number of wells in plate (6, 12, 24, 48, 96 or 384, 1536)
 #'
 #' @return matrix
 #'
@@ -29,7 +29,15 @@ plate_matrix <- function(data, well, plate = 96){
     filled_plate <- fill_plate(df = platemap, well = "well")
 
     # create empty matrix
-    if (plate == 96L) {
+    if (plate == 6L) {
+        mat <- matrix(NA, nrow = 2, ncol = 3)
+    } else if (plate == 12L) {
+        mat <- matrix(NA, nrow = 3, ncol = 4)
+    } else if (plate == 24L) {
+        mat <- matrix(NA, nrow = 4, ncol = 6)
+    } else if (plate == 48L) {
+        mat <- matrix(NA, nrow = 6, ncol = 8)
+    } else if (plate == 96L) {
         mat <- matrix(NA, nrow = 8, ncol = 12)
     } else if (plate == 384L){
         mat <- matrix(NA, nrow = 16, ncol = 24)

@@ -4,7 +4,7 @@
 #'
 #' @param data Numerical values to be plotted
 #' @param well Vector of well identifiers e.g "A01"
-#' @param plate Number of wells in complete plate (96, 384 or 1536))
+#' @param plate Number of wells in complete plate (6, 12, 24, 48, 96, 384 or 1536))
 #' @param ... additional parameters to plot wrappers
 #'
 #' @return ggplot plot
@@ -29,20 +29,26 @@ z_map <- function(data, well, plate = 96, ...){
 
     platemap <- plate_map_scale(data, well)
 
-    if (plate == 96L){
-        plt <- plt96(platemap, ...) +
-            theme_bw()
-
+    if (plate == 6L){
+        plt <- plt6(platemap, ...) + theme_bw()
+    } else if (plate == 12L){
+        plt <- plt12(platemap, ...) + theme_bw()
+    } else if (plate == 24L){
+        plt <- plt24(platemap, ...) + theme_bw()
+    } else if (plate == 48L){
+        plt <- plt48(platemap, ...) + theme_bw()
+    } else if (plate == 96L){
+        plt <- plt96(platemap, ...) + theme_bw()
+    } else if (plate == 96L){
+        plt <- plt96(platemap, ...) + theme_bw()
     } else if (plate == 384L){
-        plt <- plt384(platemap, ...) +
-            theme_bw()
-
+        plt <- plt384(platemap, ...) + theme_bw()
     } else if (plate == 1536L) {
-    plt <- plt1536(platemap, ...) +
-        theme_bw()
-
-    } else stop("Not a valid plate format. Enter either 96, 384 or 1536.",
-    call. = FALSE)
+        plt <- plt1536(platemap, ...) + theme_bw()
+    } else {
+        stop("Not a valid plate format. Enter either 6, 12, 24, 48, 96, 384 or 1536.",
+            call. = FALSE)
+    }
 
     return(plt)
 }

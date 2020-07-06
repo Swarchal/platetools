@@ -5,7 +5,7 @@
 #'
 #' @param data Vector of numerical values to score
 #' @param well Vector of well identifiers e.g "A01"
-#' @param plate Number of wells in complete plate (96, 384 or 1536)
+#' @param plate Number of wells in complete plate (6, 12, 24, 48, 96, 384 or 1536)
 #' @param threshold Numerical value of standard deviations from the mean
 #'   for a well to be classified as a 'hit'. Default it +/- 2 SD
 #' @param palette RColorBrewer palette
@@ -60,24 +60,37 @@ hit_map <- function(data, well, plate = 96, threshold = 2,
     platemap$actual_vales <- platemap$values
     platemap$values <- platemap$hit
 
-    if (plate == 96L){
-
+    if (plate == 6L){
+        plt <- plt6(platemap, ...) +
+            scale_fill_manual("hit", values = my_colours) +
+            theme_bw()
+    } else if (plate == 12L){
+        plt <- plt12(platemap, ...) +
+            scale_fill_manual("hit", values = my_colours) +
+            theme_bw()
+    } else if (plate == 24L){
+        plt <- plt24(platemap, ...) +
+            scale_fill_manual("hit", values = my_colours) +
+            theme_bw()
+    } else if (plate == 48L){
+        plt <- plt48(platemap, ...) +
+            scale_fill_manual("hit", values = my_colours) +
+            theme_bw()
+    } else if (plate == 96L){
         plt <- plt96(platemap, ...) +
             scale_fill_manual("hit", values = my_colours) +
             theme_bw()
     } else if (plate == 384L){
-
         plt <- plt384(platemap, ...) +
             scale_fill_manual("hit", values = my_colours) +
             theme_bw()
     } else if (plate == 1536L){
-
         plt <- plt1536(platemap, ...) +
             scale_fill_manual("hit", values = my_colours) +
             theme_bw()
     } else {
-
-        stop("Not a valid plate format. Either 96, 384 or 1536.", call. = FALSE)
+        stop("Not a valid plate format. Either 6, 12, 24, 48, 96, 384 or 1536.",
+             call. = FALSE)
     }
     return(plt)
 

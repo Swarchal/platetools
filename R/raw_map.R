@@ -4,7 +4,7 @@
 #'
 #' @param data Numerical values to be plotted
 #' @param well Vector of well identifiers e.g "A01"
-#' @param plate Number of wells in complete plate (96, 384 or 1536)
+#' @param plate Number of wells in complete plate (6, 12, 24, 48, 96, 384 or 1536)
 #' @param ... additional parameters to plot wrappers
 #'
 #' @import ggplot2
@@ -27,19 +27,23 @@ raw_map <- function(data, well, plate = 96, ...) {
 
     # transform well labels into row-column values
     platemap <- plate_map(data, well)
-
-    if (plate == 96){
-    plt <- plt96(platemap, ...) + theme_bw()
-
+    if (plate == 6L) {
+        plt <- plt6(platemap, ...) + theme_bw()
+    } else if (plate == 12L) {
+        plt <- plt12(platemap, ...) + theme_bw()
+    } else if (plate == 24L) {
+        plt <- plt24(platemap, ...) + theme_bw()
+    } else if (plate == 48L) {
+        plt <- plt48(platemap, ...) + theme_bw()
+    } else if (plate == 96){
+        plt <- plt96(platemap, ...) + theme_bw()
     } else if (plate == 384){
-    plt <- plt384(platemap, ...) + theme_bw()
-
+        plt <- plt384(platemap, ...) + theme_bw()
     } else if (plate == 1536L){
-    plt <- plt1536(platemap, ...) + theme_bw()
-
+        plt <- plt1536(platemap, ...) + theme_bw()
     } else{
-    stop("Invalid argument for 'plate'. \nOption: 96, 384 or 1536",
-        call. = FALSE)
+        stop("Invalid argument for 'plate'. \nOption: 6, 12, 24, 48, 96, 384 or 1536",
+            call. = FALSE)
     }
 
     return(plt)
