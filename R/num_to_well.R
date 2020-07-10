@@ -1,7 +1,8 @@
 #' Converts numbers to well labels
 #'
 #' Converts numerical values to corresponding alpha-numeric well labels
-#' for 96, 384 or 1536 well plates.
+#' for 6, 12, 24, 48, 96, 384 or 1536 well plates.
+#' Note, it's advisable to specify the number of wells in `plate`.
 #'
 #' @param x Vector of numbers to be converted
 #' @param plate Number of wells in complete plate (96 or 384)
@@ -24,7 +25,7 @@ num_to_well <- function(x, plate = 96){
         stop("x cannot be greater than the number of wells in the plate",
              call. = FALSE)
     }
-    if (plate == 6) {
+    if (plate == 6L) {
         rows <- LETTERS[1:2]
         columns <- 1:3
     } else if (plate == 12L) {

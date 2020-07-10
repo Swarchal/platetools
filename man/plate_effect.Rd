@@ -9,7 +9,7 @@ plate_effect(platemap, plate)
 \arguments{
 \item{platemap}{platemap produced by \code{plate_map}}
 
-\item{plate, }{integer either 96 or 384}
+\item{plate, }{integer, the number of wells in a single plate}
 }
 \description{
 Given a platemap produced by \code{plate_map}, this will perform

@@ -11,7 +11,7 @@ b_score(data, well, plate)
 
 \item{well}{alpha-numeric wellIDs. e.g 'A01'}
 
-\item{plate}{numeric, number of wells within a plate, either 96 or 384}
+\item{plate}{numeric, number of wells within a plate}
 }
 \description{
 2 way median polish to remove plate effects such as row/column/edge effects.

@@ -16,7 +16,8 @@ Vector of alpha-numeric well labels
 }
 \description{
 Converts numerical values to corresponding alpha-numeric well labels
-for 96, 384 or 1536 well plates.
+for 6, 12, 24, 48, 96, 384 or 1536 well plates.
+Note, it's advisable to specify the number of wells in `plate`.
 }
 \examples{
 num_to_well(1:96)

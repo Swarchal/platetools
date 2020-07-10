@@ -23,7 +23,28 @@
 med_smooth <- function(platemap, plate, eps = 0.01, maxiter = 10,
                        trace.iter = FALSE, na.rm = TRUE){
 
-    if (plate == 96L){
+
+    if (plate == 6L) {
+        mat_plate_map <- matrix(platemap$values,
+                                nrow=2,
+                                ncol=3,
+                                byrow=True)
+    } else if (plate == 12L) {
+        mat_plate_map <- matrix(platemap$values,
+                                nrow=3,
+                                ncol=4,
+                                byrow=True)
+    } else if (plate == 24L) {
+        mat_plate_map <- matrix(platemap$values,
+                                nrow=4,
+                                ncol=6,
+                                byrow=True)
+    } else if (plate == 48L) {
+        mat_plate_map <- matrix(platemap$values,
+                                nrow=6,
+                                ncol=8,
+                                byrow=True)
+    } else if (plate == 96L){
         # transform into 12*8 matrix (96-well plate)
         # fills matrix in a row-wise fashion i.e, A01, A02 ...
         mat_plate_map <- matrix(platemap$values,
@@ -37,13 +58,13 @@ med_smooth <- function(platemap, plate, eps = 0.01, maxiter = 10,
                                 nrow = 16,
                                 ncol = 24,
                                 byrow = TRUE)
-    } else if (plate == 1536){
+    } else if (plate == 1536L){
         mat_plate_map <- matrix(platemap$values,
                                 nrow = 32,
                                 ncol = 48,
                                 byrow = TRUE)
     } else {
-        stop("Not a plate format. \nArgument 'plate', should be 96 or 384.",
+        stop("Not a plate format. \nArgument 'plate', should be one of 6, 12, 24, 48, 96, 384 or 1536",
              call. = FALSE)
     }
 
@@ -82,30 +103,54 @@ med_smooth <- function(platemap, plate, eps = 0.01, maxiter = 10,
 #' Useful for row and column effects, as well as the raw residuals.
 #'
 #' @param platemap platemap produced by \code{plate_map}
-#' @param plate, integer either 96 or 384
+#' @param plate, integer, the number of wells in a single plate
 #' @export
 
-
 plate_effect <- function(platemap, plate) {
-    if (plate == 96L){
+    if (plate == 6L) {
+        mat_plate_map <- matrix(platemap$values,
+                                nrow=2,
+                                ncol=3,
+                                byrow=True)
+    } else if (plate == 12L) {
+        mat_plate_map <- matrix(platemap$values,
+                                nrow=3,
+                                ncol=4,
+                                byrow=True)
+    } else if (plate == 24L) {
+        mat_plate_map <- matrix(platemap$values,
+                                nrow=4,
+                                ncol=6,
+                                byrow=True)
+    } else if (plate == 48L) {
+        mat_plate_map <- matrix(platemap$values,
+                                nrow=6,
+                                ncol=8,
+                                byrow=True)
+    } else if (plate == 96L){
+        # transform into 12*8 matrix (96-well plate)
+        # fills matrix in a row-wise fashion i.e, A01, A02 ...
         mat_plate_map <- matrix(platemap$values,
                                 nrow = 8,
                                 ncol = 12,
                                 byrow = TRUE)
     } else if (plate == 384L){
+        # transform into 24*16 matrix (384-well plate)
+        # fills matrix in a row-wise fashion, i.e A01, A02 ...
         mat_plate_map <- matrix(platemap$values,
                                 nrow = 16,
                                 ncol = 24,
                                 byrow = TRUE)
-    } else if (plate == 1536L) {
+    } else if (plate == 1536L){
         mat_plate_map <- matrix(platemap$values,
                                 nrow = 32,
                                 ncol = 48,
                                 byrow = TRUE)
     } else {
-        stop("Invalid argument for `plate`. \nOptions: 96, 384 or 1536.",
+        stop("Not a plate format. \nArgument 'plate', should be one of 6, 12, 24, 48, 96, 384 or 1536",
              call. = FALSE)
     }
+
     data_pol <- medpolish(mat_plate_map,
                           na.rm = TRUE,
                           trace.iter = FALSE)
@@ -123,7 +168,7 @@ plate_effect <- function(platemap, plate) {
 #'
 #' @param data numeric data, either a vector or dataframe column
 #' @param well alpha-numeric wellIDs. e.g 'A01'
-#' @param plate numeric, number of wells within a plate, either 96 or 384
+#' @param plate numeric, number of wells within a plate
 #'
 #' @export
 #'
