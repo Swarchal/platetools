@@ -32,9 +32,9 @@ fill_plate <- function(df, well, plate = 96) {
     }
 
     # check plate is a valid plate format
-    accepted_plates <- c(96L, 384L, 1536L)
+    accepted_plates <- c(6L, 12L, 24L, 48L, 96L, 384L, 1536L)
     if (plate %in% accepted_plates == FALSE) {
-        stop("'plate' needs to be either 96, 384 or 1536", call. = FALSE)
+        stop("'plate' needs to be either 6, 12, 24, 48, 96, 384 or 1536", call. = FALSE)
     }
 
     well_col <- df[, well]

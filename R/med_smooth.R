@@ -28,22 +28,22 @@ med_smooth <- function(platemap, plate, eps = 0.01, maxiter = 10,
         mat_plate_map <- matrix(platemap$values,
                                 nrow=2,
                                 ncol=3,
-                                byrow=True)
+                                byrow=TRUE)
     } else if (plate == 12L) {
         mat_plate_map <- matrix(platemap$values,
                                 nrow=3,
                                 ncol=4,
-                                byrow=True)
+                                byrow=TRUE)
     } else if (plate == 24L) {
         mat_plate_map <- matrix(platemap$values,
                                 nrow=4,
                                 ncol=6,
-                                byrow=True)
+                                byrow=TRUE)
     } else if (plate == 48L) {
         mat_plate_map <- matrix(platemap$values,
                                 nrow=6,
                                 ncol=8,
-                                byrow=True)
+                                byrow=TRUE)
     } else if (plate == 96L){
         # transform into 12*8 matrix (96-well plate)
         # fills matrix in a row-wise fashion i.e, A01, A02 ...
@@ -111,22 +111,22 @@ plate_effect <- function(platemap, plate) {
         mat_plate_map <- matrix(platemap$values,
                                 nrow=2,
                                 ncol=3,
-                                byrow=True)
+                                byrow=TRUE)
     } else if (plate == 12L) {
         mat_plate_map <- matrix(platemap$values,
                                 nrow=3,
                                 ncol=4,
-                                byrow=True)
+                                byrow=TRUE)
     } else if (plate == 24L) {
         mat_plate_map <- matrix(platemap$values,
                                 nrow=4,
                                 ncol=6,
-                                byrow=True)
+                                byrow=TRUE)
     } else if (plate == 48L) {
         mat_plate_map <- matrix(platemap$values,
                                 nrow=6,
                                 ncol=8,
-                                byrow=True)
+                                byrow=TRUE)
     } else if (plate == 96L){
         # transform into 12*8 matrix (96-well plate)
         # fills matrix in a row-wise fashion i.e, A01, A02 ...
