@@ -1,7 +1,11 @@
+## 2020-11-10
+**version 0.1.5**
+- Add arguments to change size, colour, alpha of missing wells
+
+
 ## 2020-07-06
 **version 0.1.4**
 - Add 6, 12, 24 and 48 well plates
-- Specify colour of missing wells
 
 
 ## 2020-05-04
