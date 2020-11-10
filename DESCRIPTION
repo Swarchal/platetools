@@ -17,4 +17,4 @@ Imports:
 Suggests:
     testthat,
     viridis
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
