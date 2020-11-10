@@ -4,7 +4,14 @@
 \alias{plt384}
 \title{ggplot plate object}
 \usage{
-plt384(platemap, size = 5, shape = 22)
+plt384(
+  platemap,
+  size = 5,
+  shape = 22,
+  na_fill = "white",
+  na_size_ratio = 0.95,
+  na_alpha = 0.1
+)
 }
 \arguments{
 \item{platemap}{platemap dataframe produced by \code{plate_map}}
@@ -12,6 +19,13 @@ plt384(platemap, size = 5, shape = 22)
 \item{size}{int, size parameter for ggplot2::geom_point}
 
 \item{shape}{int, shape parameter for ggplot2::geom_point}
+
+\item{na_fill}{string, fill colour for na or missing values}
+
+\item{na_size_ratio}{float, size ratio for missing values, set to 1 for same
+size as normal values.}
+
+\item{na_alpha}{float, alpha transparancy for missing or na values}
 }
 \value{
 ggplot object
