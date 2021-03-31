@@ -113,6 +113,7 @@ plate_map_multiple <- function(data, well){
 #' @param well vector of alphanumeric well labels
 
 is_1536 <- function(well){
-    # check if contains double character well labels
-    any(nchar(as.character(well)) == 4)
+  # check if contains double character well labels
+  two_letters <- do.call(paste0,expand.grid(LETTERS,LETTERS))
+  any(grepl(paste(two_letters, collapse = '|'), well, ignore.case = TRUE))
 }
