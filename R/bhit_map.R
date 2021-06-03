@@ -65,7 +65,7 @@ bhit_map <- function(data, well, plate = 96, threshold = 2,
         ncol <- 24
     } else if (plate == 1536L) {
         nrow <- 32
-        ncol <- 24
+        ncol <- 48
     } else {
        stop("Not a plate format.\nArgument 'plate' should be 6, 12, 24, 48, 96, 384 or 1536.",
              call. = FALSE)
