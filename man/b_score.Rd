@@ -4,7 +4,7 @@
 \alias{b_score}
 \title{2 way median polish}
 \usage{
-b_score(data, well, plate)
+b_score(data, well, plate, plate_id = NULL, normalise = FALSE)
 }
 \arguments{
 \item{data}{numeric data, either a vector or dataframe column}
@@ -12,6 +12,10 @@ b_score(data, well, plate)
 \item{well}{alpha-numeric wellIDs. e.g 'A01'}
 
 \item{plate}{numeric, number of wells within a plate}
+
+\item{plate_id}{Vector of plate_identifiers e.g "plate_01"}
+
+\item{normalise}{Boolean, whether or not to divide by `data`'s MAD}
 }
 \description{
 2 way median polish to remove plate effects such as row/column/edge effects.

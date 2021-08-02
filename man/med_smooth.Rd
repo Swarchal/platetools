@@ -10,7 +10,8 @@ med_smooth(
   eps = 0.01,
   maxiter = 10,
   trace.iter = FALSE,
-  na.rm = TRUE
+  na.rm = TRUE,
+  normalise = FALSE
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ med_smooth(
 \item{trace.iter}{Boolean, should progress in convergence be reported?}
 
 \item{na.rm}{Boolean, should missing values be removed?}
+
+\item{normalise}{Boolean, should the data be divided by the MAD?}
 }
 \value{
 A dataframe consisting of two column, wellID and

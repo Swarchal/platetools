@@ -11,6 +11,7 @@
 #' @param maxiter int, the maximum number of iterations
 #' @param trace.iter Boolean, should progress in convergence be reported?
 #' @param na.rm Boolean, should missing values be removed?
+#' @param normalise Boolean, should the data be divided by the MAD?
 #'
 #' @return A dataframe consisting of two column, wellID and
 #'         polished numeric values
@@ -21,7 +22,7 @@
 
 
 med_smooth <- function(platemap, plate, eps = 0.01, maxiter = 10,
-                       trace.iter = FALSE, na.rm = TRUE){
+                       trace.iter = FALSE, na.rm = TRUE, normalise=FALSE){
 
 
     if (plate == 6L) {
@@ -91,6 +92,11 @@ med_smooth <- function(platemap, plate, eps = 0.01, maxiter = 10,
     )
     # change residuals from factor to numeric
     df$residual <- as.numeric(as.character(df$residual))
+
+    if (normalise) {
+        plate_mad = stats::mad(df$residual, na.rm=na.rm)
+        df$residual = df$residual / plate_mad
+    }
 
     return(df)
 
@@ -169,6 +175,8 @@ plate_effect <- function(platemap, plate) {
 #' @param data numeric data, either a vector or dataframe column
 #' @param well alpha-numeric wellIDs. e.g 'A01'
 #' @param plate numeric, number of wells within a plate
+#' @param plate_id Vector of plate_identifiers e.g "plate_01"
+#' @param normalise Boolean, whether or not to divide by `data`'s MAD
 #'
 #' @export
 #'
@@ -180,7 +188,19 @@ plate_effect <- function(platemap, plate) {
 #'         well = df$well,
 #'         plate = 96)
 
-b_score <- function(data, well, plate){
-    platemap <- plate_map(data, well)
-    med_smooth(platemap, plate)
+b_score <- function(data, well, plate, plate_id = NULL, normalise = FALSE){
+    if (is.null(plate_id)) {
+        # single plate
+        platemap <- plate_map(data, well)
+        return(med_smooth(platemap, plate, normalise = normalise))
+    }
+    # if plate_id is not NULL, then split by plate_id and perform b-score on a
+    # plate-by-plate basis
+    df = data.frame(well = well, data = data, plate_id = plate_id)
+    df_split = split(df, df$plate_id)
+    b_score_list = lapply(df_split, function(x) {
+        med_smooth(plate_map(x$data, x$well), plate = plate, normalise = normalise)
+    })
+    b_score_df = list_to_dataframe(b_score_list, col_name = "plate_id")
+    return(b_score_df)
 }
