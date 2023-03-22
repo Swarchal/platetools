@@ -101,7 +101,9 @@ bhit_map <- function(data, well, plate = 96, threshold = 2,
 
     # calculate whether values are beyond the threshold; defined as hit or null
     for (row in 1:nrow(platemap)) {
-        if (platemap[row, 'values'] > threshold) {
+        if (!is.finite(platemap[row, "values"])) {
+            platemap$hit[row] <- NaN
+        } else if (platemap[row, 'values'] > threshold) {
             platemap$hit[row] <- "hit"
         } else if (platemap[row, 'values'] < (-1*threshold)) {
             platemap$hit[row] <- "neg_hit"
