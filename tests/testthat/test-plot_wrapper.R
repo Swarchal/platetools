@@ -30,11 +30,8 @@ test_that("returns ggplot object",{
 })
 
 test_that("returns expected ggplot object",{
-    expect_equal(length(out96), 9L) # 9 element list
-    expect_equal(names(out96),
-		 c('data', 'layers', 'scales', 'mapping',
-		   'theme', 'coordinates', 'facet', 'plot_env',
-		   'labels'))
+    expect_equal(length(out96), length(ggplot()))
+    expect_equal(names(out96), names(ggplot()))
     expect_equal(names(out96), names(out384))
 })
 
